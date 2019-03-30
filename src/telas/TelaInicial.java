@@ -122,7 +122,7 @@ public class TelaInicial extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelDPLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 426, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 524, Short.MAX_VALUE)
                 .addGroup(painelDPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCliente)
                     .addComponent(btnProduto)
@@ -143,7 +143,9 @@ public class TelaInicial extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelDP)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(painelDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -159,13 +161,14 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
         TelaCliente telaCli = new TelaCliente();
+        telaCli.setPaineu(painelDP);
         painelDP.add(telaCli);
         telaCli.setVisible(true);
     }//GEN-LAST:event_btnClienteActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         TelaSair sair = new TelaSair();
-        painelDP.add(sair);
+        //painelDP.add(sair);
         sair.setVisible(true);
     }//GEN-LAST:event_btnSairActionPerformed
 

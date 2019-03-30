@@ -181,17 +181,15 @@ public class TelaCliente extends javax.swing.JInternalFrame {
 
     private void btnNovoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoClienteActionPerformed
         TelaNovoCliente telaNovoCliente = new TelaNovoCliente();
+        paineu.add(telaNovoCliente);
         telaNovoCliente.setVisible(true);
         
        
         
-        paineu.add(telaNovoCliente);
+        
+        this.setVisible(false);
          
-        try {
-           telaNovoCliente.setMaximum(true);
-       } catch (PropertyVetoException ex) {
-           Logger.getLogger(TelaCliente.class.getName()).log(Level.SEVERE, null, ex);
-       }
+      
         
     }//GEN-LAST:event_btnNovoClienteActionPerformed
 
