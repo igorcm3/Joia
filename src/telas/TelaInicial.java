@@ -32,15 +32,20 @@ public class TelaInicial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        painelDP = new javax.swing.JDesktopPane();
         btnCliente = new javax.swing.JButton();
         btnProduto = new javax.swing.JButton();
-        btnServico = new javax.swing.JButton();
+        btnServicos = new javax.swing.JButton();
+        btnAgendamento = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
-        paineu = new javax.swing.JDesktopPane();
+        btnVenda = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(254, 254, 254));
-        setUndecorated(true);
+
+        painelDP.setBackground(new java.awt.Color(204, 255, 255));
+        painelDP.setForeground(new java.awt.Color(204, 255, 255));
 
         btnCliente.setText("Cliente");
         btnCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -56,12 +61,9 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
 
-        btnServico.setText("Servico");
-        btnServico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnServicoActionPerformed(evt);
-            }
-        });
+        btnServicos.setText("Serviços");
+
+        btnAgendamento.setText("Agendamentos");
 
         btnSair.setText("Sair");
         btnSair.addActionListener(new java.awt.event.ActionListener() {
@@ -70,78 +72,101 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
 
-        paineu.setBackground(new java.awt.Color(254, 254, 254));
+        btnVenda.setText("Venda");
+        btnVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVendaActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel1.setText("Joalheria Joia");
+
+        painelDP.setLayer(btnCliente, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDP.setLayer(btnProduto, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDP.setLayer(btnServicos, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDP.setLayer(btnAgendamento, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDP.setLayer(btnSair, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDP.setLayer(btnVenda, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDP.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout painelDPLayout = new javax.swing.GroupLayout(painelDP);
+        painelDP.setLayout(painelDPLayout);
+        painelDPLayout.setHorizontalGroup(
+            painelDPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelDPLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(painelDPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelDPLayout.createSequentialGroup()
+                        .addComponent(btnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(painelDPLayout.createSequentialGroup()
+                        .addComponent(btnServicos, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAgendamento, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 558, Short.MAX_VALUE)
+                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24))))
+            .addGroup(painelDPLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        painelDPLayout.setVerticalGroup(
+            painelDPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelDPLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 426, Short.MAX_VALUE)
+                .addGroup(painelDPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCliente)
+                    .addComponent(btnProduto)
+                    .addComponent(btnVenda))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(painelDPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnServicos)
+                    .addComponent(btnAgendamento)
+                    .addComponent(btnSair))
+                .addGap(32, 32, 32))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(paineu)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75)
-                        .addComponent(btnProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(71, 71, 71)
-                        .addComponent(btnServico, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
-                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+            .addComponent(painelDP)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnServico, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(paineu, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(painelDP)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
-        TelaCliente telaCliente = new TelaCliente();
-        if(paineu.getAllFrames()!= null)
-            paineu.removeAll();
-        paineu.add(telaCliente);
-        try {
-            telaCliente.setMaximum(true);
-        } catch (PropertyVetoException ex) {
-            Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        telaCliente.setPaineu(paineu);
-        telaCliente.setVisible(true);
-    }//GEN-LAST:event_btnClienteActionPerformed
-
-    private void btnServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServicoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnServicoActionPerformed
-
     private void btnProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutoActionPerformed
-        TelaProduto telaProduto = new TelaProduto();
-        if(paineu.getAllFrames()!= null)
-            paineu.removeAll();
-        paineu.add(telaProduto);
-        try {
-            telaProduto.setMaximum(true);
-        } catch (PropertyVetoException ex) {
-            Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        telaProduto.setVisible(true);
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnProdutoActionPerformed
 
+    private void btnVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVendaActionPerformed
+
+    private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
+        TelaCliente telaCli = new TelaCliente();
+        painelDP.add(telaCli);
+        telaCli.setVisible(true);
+    }//GEN-LAST:event_btnClienteActionPerformed
+
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        TelaSair telaSair = new TelaSair();
-        telaSair.setVisible(true);
-        
+        TelaSair sair = new TelaSair();
+        painelDP.add(sair);
+        sair.setVisible(true);
     }//GEN-LAST:event_btnSairActionPerformed
 
     /**
@@ -180,10 +205,13 @@ public class TelaInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgendamento;
     private javax.swing.JButton btnCliente;
     private javax.swing.JButton btnProduto;
     private javax.swing.JButton btnSair;
-    private javax.swing.JButton btnServico;
-    private javax.swing.JDesktopPane paineu;
+    private javax.swing.JButton btnServicos;
+    private javax.swing.JButton btnVenda;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JDesktopPane painelDP;
     // End of variables declaration//GEN-END:variables
 }
