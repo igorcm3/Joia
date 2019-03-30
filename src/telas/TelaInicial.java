@@ -20,6 +20,7 @@ public class TelaInicial extends javax.swing.JFrame {
      */
     public TelaInicial() {
         initComponents();
+        System.out.println("Manda o email pro giovani boiola");
     }
 
     /**
@@ -138,7 +139,9 @@ public class TelaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProdutoActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        System.exit(0);
+        TelaSair telaSair = new TelaSair();
+        telaSair.setVisible(true);
+        
     }//GEN-LAST:event_btnSairActionPerformed
 
     /**
