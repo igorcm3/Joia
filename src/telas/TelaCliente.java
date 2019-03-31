@@ -33,7 +33,6 @@ public class TelaCliente extends javax.swing.JInternalFrame {
    
     public TelaCliente() {
         initComponents();
-        System.out.println("Clickou em cliente");
         dtm = (DefaultTableModel) tabela.getModel();
         ClienteDao dao = new ClienteDao();
         listaCliente = dao.getCliente();
@@ -208,31 +207,32 @@ public class TelaCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnRemoverActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        Cliente cliente = new Cliente();
-        int linha = 0;
-        ClienteDao clienteDao = new ClienteDao();
-        List<Cliente> listaCli = new ArrayList<Cliente>();
-        listaCli = clienteDao.getCliente();
+        if(!tabela.getSelectionModel().isSelectionEmpty()){
+            Cliente cliente = new Cliente();
+            int linha = 0;
+            ClienteDao clienteDao = new ClienteDao();
+            List<Cliente> listaCli = new ArrayList<Cliente>();
+            listaCli = clienteDao.getCliente();
 
-        for (Cliente c : listaCli){
-            if(c.getCodigo().equals(tabela.getValueAt(tabela.getSelectedRow(), 0))){
-                linha = tabela.getSelectedRow();
-                cliente = c;
+            for (Cliente c : listaCli){
+                if(c.getCodigo().equals(tabela.getValueAt(tabela.getSelectedRow(), 0))){
+                    linha = tabela.getSelectedRow();
+                    cliente = c;
+                }
+
             }
-                
+
+            cliente.setNome(tabela.getValueAt(linha, 1).toString());
+            cliente.setEndereco(tabela.getValueAt(linha, 2).toString());
+            cliente.setBairro(tabela.getValueAt(linha, 3).toString());
+            cliente.setCidade(tabela.getValueAt(linha, 4).toString());
+            cliente.setCep(tabela.getValueAt(linha, 5).toString());
+            cliente.setCpf(tabela.getValueAt(linha, 6).toString());
+            cliente.setUf(tabela.getValueAt(linha, 7).toString());
+            cliente.setRg(tabela.getValueAt(linha, 8).toString());
+            clienteDao.alteraCliente(cliente);
+            this.setVisible(false);
         }
-        
-        cliente.setNome(tabela.getValueAt(linha, 1).toString());
-        cliente.setEndereco(tabela.getValueAt(linha, 2).toString());
-        cliente.setBairro(tabela.getValueAt(linha, 3).toString());
-        cliente.setCidade(tabela.getValueAt(linha, 4).toString());
-        cliente.setCep(tabela.getValueAt(linha, 5).toString());
-        cliente.setCpf(tabela.getValueAt(linha, 6).toString());
-        cliente.setUf(tabela.getValueAt(linha, 7).toString());
-        cliente.setRg(tabela.getValueAt(linha, 8).toString());
-        clienteDao.alteraCliente(cliente);
-        this.setVisible(false);
-        
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     /**
