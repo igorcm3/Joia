@@ -62,8 +62,10 @@ public class TelaInicial extends javax.swing.JFrame {
         });
 
         btnServicos.setText("Serviços");
+        btnServicos.setEnabled(false);
 
         btnAgendamento.setText("Agendamentos");
+        btnAgendamento.setEnabled(false);
 
         btnSair.setText("Sair");
         btnSair.addActionListener(new java.awt.event.ActionListener() {
@@ -73,6 +75,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
 
         btnVenda.setText("Venda");
+        btnVenda.setEnabled(false);
         btnVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVendaActionPerformed(evt);
