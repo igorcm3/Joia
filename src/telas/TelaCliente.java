@@ -208,9 +208,6 @@ public class TelaCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnRemoverActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        // verificar se aluma coisa esta selecionada na tabela
-        if(!tabela.getSelectionModel().isSelectionEmpty()){
-        
         Cliente cliente = new Cliente();
         int linha = 0;
         ClienteDao clienteDao = new ClienteDao();
@@ -236,7 +233,6 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         clienteDao.alteraCliente(cliente);
         this.setVisible(false);
         
-        }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     /**
