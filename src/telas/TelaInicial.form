@@ -122,11 +122,13 @@
         <Component class="javax.swing.JButton" name="btnServicos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Servi&#xe7;os"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnAgendamento">
           <Properties>
             <Property name="text" type="java.lang.String" value="Agendamentos"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnSair">
@@ -140,6 +142,7 @@
         <Component class="javax.swing.JButton" name="btnVenda">
           <Properties>
             <Property name="text" type="java.lang.String" value="Venda"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVendaActionPerformed"/>
