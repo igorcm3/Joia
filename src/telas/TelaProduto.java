@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
+import modelo.Estoque;
 import modelo.Produto;
 
 /**
@@ -31,9 +32,11 @@ public class TelaProduto extends javax.swing.JInternalFrame {
         dtm = (DefaultTableModel) tabela.getModel();
         ProdutoDao dao = new ProdutoDao();
         listaProduto = dao.getProduto();
-    
+        Estoque estoque = new Estoque();
+        estoque.setQuantidade(10);
+        // fazer dao estoque para pegar o estoque desse produto pela Fk
         for (Produto produto : listaProduto){
-            dtm.insertRow(dtm.getRowCount(), new Object[]{produto.getCodigo(),produto.getNome(),produto.getCusto(),produto.getVenda(),produto.getEstoque().getQuantidade(),produto.getTipoJoia().getDescricao()});
+            dtm.insertRow(dtm.getRowCount(), new Object[]{produto.getCodigo(),produto.getNome(),produto.getCusto(),produto.getVenda(),estoque.getQuantidade(),produto.getTipoJoia().getDescricao()});
         }
     }
 

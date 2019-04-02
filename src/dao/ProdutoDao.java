@@ -32,7 +32,7 @@ public class ProdutoDao {
         conecta = new Conecta();
         conecta.iniciaConexao();
 
-        String sql = "INSERT INTO `JoalheriaJoia`.`Produto` (`codigo`, `nome`, `custo`, `venda`, `idTipoJoia`, `idEstoque`) VALUES (?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO `JoalheriaJoia`.`Produto` (`codigo`, `nome`, `custo`, `venda`, `idTipoJoia`) VALUES (?, ?, ?, ?, ?);";
 
         try {
             PreparedStatement pstm;
@@ -42,7 +42,6 @@ public class ProdutoDao {
             pstm.setFloat(3, produto.getCusto());
             pstm.setFloat(4, produto.getVenda());
             pstm.setInt(5, produto.getTipoJoia().getIdTipoJoia());
-            pstm.setInt(6, produto.getEstoque().getIdEstoque());
             pstm.execute();
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -56,7 +55,7 @@ public class ProdutoDao {
         conecta = new Conecta();
         conecta.iniciaConexao();
         
-        String sql = "UPDATE `JoalheriaJoia`.`Produto` SET `codigo`=?, `nome`=?, `custo`=?, `venda`=?, `idTipoJoia`=?, `idEstoque`=? `idProduto`=?;";
+        String sql = "UPDATE `JoalheriaJoia`.`Produto` SET `codigo`=?, `nome`=?, `custo`=?, `venda`=?, `idTipoJoia`=?,`idProduto`=?;";
        
         try {
             PreparedStatement pstm;
@@ -66,8 +65,7 @@ public class ProdutoDao {
             pstm.setFloat(3, produto.getCusto());
             pstm.setFloat(4, produto.getVenda());
             pstm.setInt(5, produto.getTipoJoia().getIdTipoJoia());
-            pstm.setInt(6, produto.getEstoque().getIdEstoque());
-            pstm.setInt(7,produto.getIdProduto());
+            pstm.setInt(6,produto.getIdProduto());
             pstm.execute();
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -80,7 +78,7 @@ public class ProdutoDao {
         conecta = new Conecta();
         conecta.iniciaConexao();
         
-        String sql = "DELETE FROM `JoalheriaJoia`.`Produto` WHERE idProduto = ? ; ";
+        String sql = "DELETE ON CASCADE FROM `JoalheriaJoia`.`Produto` WHERE idProduto = ? ; ";
         List<Produto>  lista = new ArrayList<Produto>();
         int id = 0;
        
@@ -114,7 +112,7 @@ public class ProdutoDao {
         List<Produto> listaProduto = new ArrayList<Produto>();
         conecta = new Conecta();
         conecta.iniciaConexao();
-        String sql = "SELECT * FROM JoalheriaJoia.Cliente;";
+        String sql = "SELECT * FROM JoalheriaJoia.Produto;";
         ResultSet rs;
         
         PreparedStatement pstm;
@@ -130,10 +128,11 @@ public class ProdutoDao {
                 Float custo = rs.getFloat("custo");
                 Float venda = rs.getFloat("venda");
                 Estoque estoque = new Estoque();
+                estoque.setQuantidade(10);
                 TipoJoia tipoJoia = new TipoJoia(); 
                 tipoJoia.setIdTipoJoia(rs.getInt("idTipoJoia"));
-                estoque.setIdEstoque(rs.getInt("idEstoque")); 
-                Produto produto = new Produto(estoque, cod, nome, tipoJoia, custo, venda);
+               // estoque.setIdEstoque(rs.getInt("idEstoque")); 
+                Produto produto = new Produto(cod, nome, tipoJoia, custo, venda);
                 produto.setIdProduto(id);
                 listaProduto.add(produto);
             }

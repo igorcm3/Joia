@@ -11,7 +11,6 @@ package modelo;
  */
 public class Produto {
     private int idProduto;
-    private Estoque estoque;
     private String codigo,nome;
     private TipoJoia tipoJoia;
     private float custo,venda;
@@ -19,8 +18,7 @@ public class Produto {
     public Produto() {
     }
 
-    public Produto(Estoque estoque, String codigo, String nome, TipoJoia tipoJoia, float custo, float venda) {
-        this.estoque = estoque;
+    public Produto(String codigo, String nome, TipoJoia tipoJoia, float custo, float venda) {
         this.codigo = codigo;
         this.nome = nome;
         this.tipoJoia = tipoJoia;
@@ -34,14 +32,6 @@ public class Produto {
 
     public void setIdProduto(int idProduto) {
         this.idProduto = idProduto;
-    }
-
-    public Estoque getEstoque() {
-        return estoque;
-    }
-
-    public void setEstoque(Estoque estoque) {
-        this.estoque = estoque;
     }
 
     public String getCodigo() {
