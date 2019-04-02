@@ -88,6 +88,11 @@ public class TelaProduto extends javax.swing.JInternalFrame {
         }
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnNovo.setText("Novo");
         btnNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -174,11 +179,17 @@ public class TelaProduto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        System.out.println("o produto selecionado foi  "+tabela.getValueAt(tabela.getSelectedRow(), 1)+" Codigo  "+tabela.getValueAt(tabela.getSelectedRow(), 0));
-        ProdutoDao dao = new ProdutoDao();
-        dao.excluiProduto(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
-        this.setVisible(false);
+        if(!tabela.getSelectionModel().isSelectionEmpty()){
+            System.out.println("o produto selecionado foi  "+tabela.getValueAt(tabela.getSelectedRow(), 1)+" Codigo  "+tabela.getValueAt(tabela.getSelectedRow(), 0));
+            ProdutoDao dao = new ProdutoDao();
+            dao.excluiProduto(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
+            this.setVisible(false);
+          }
     }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarActionPerformed
     
     
     

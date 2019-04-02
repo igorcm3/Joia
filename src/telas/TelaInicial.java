@@ -90,7 +90,7 @@ public class TelaInicial extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(51, 0, 153));
         jLabel1.setText("Joalheria Joia");
 
-        lbLogomarca.setIcon(new javax.swing.ImageIcon("C:\\Users\\coron\\Desktop\\-diamond_89754.png")); // NOI18N
+        lbLogomarca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/-diamond_89754.png"))); // NOI18N
         lbLogomarca.setText("Logomarca");
 
         javax.swing.GroupLayout painellCorLayout = new javax.swing.GroupLayout(painellCor);

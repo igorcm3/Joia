@@ -198,12 +198,12 @@ public class TelaCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnNovoClienteActionPerformed
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
-        
-        System.out.println("o cliente selecionado foi  "+tabela.getValueAt(tabela.getSelectedRow(), 1)+" Codigo  "+tabela.getValueAt(tabela.getSelectedRow(), 0));
+         if(!tabela.getSelectionModel().isSelectionEmpty()){
         
         ClienteDao dao = new ClienteDao();
         dao.exccluiCliente(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
         this.setVisible(false);
+         }
     }//GEN-LAST:event_btnRemoverActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
