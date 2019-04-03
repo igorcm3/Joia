@@ -18,7 +18,7 @@ public class Conecta {
     private String BD = "JoalheriaJoia";
     private String URL = "jdbc:mysql://localhost:3306/"+BD;
     private String USERNAME = "root";
-    private String PASSWORD = "admin";
+    private String PASSWORD = "root";
     private Connection conexao;
     private PreparedStatement pstm; //trocar por PreparedStatement
     
