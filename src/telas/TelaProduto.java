@@ -36,7 +36,9 @@ public class TelaProduto extends javax.swing.JInternalFrame {
         estoque.setQuantidade(10);
         // fazer dao estoque para pegar o estoque desse produto pela Fk
         for (Produto produto : listaProduto){
-            dtm.insertRow(dtm.getRowCount(), new Object[]{produto.getCodigo(),produto.getNome(),produto.getCusto(),produto.getVenda(),estoque.getQuantidade(),produto.getTipoJoia().getDescricao()});
+            dtm.insertRow(dtm.getRowCount(), new Object[]{produto.getCodigo(),produto.getNome(),produto.getCusto(),produto.getVenda(),estoque.getQuantidade(),produto.getTipoJoia().getDescricao()});    
+            
+            
         }
     }
 
