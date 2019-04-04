@@ -168,7 +168,7 @@ public class TelaNovoProduto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSalvarNovoProdutoActionPerformed
 
     private void btnVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar1ActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
     }//GEN-LAST:event_btnVoltar1ActionPerformed
     public void setPosicao() {
         Dimension d = this.getDesktopPane().getSize();
