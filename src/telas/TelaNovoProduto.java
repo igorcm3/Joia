@@ -6,6 +6,7 @@
 package telas;
 
 import dao.ProdutoDao;
+import java.awt.Dimension;
 import modelo.Produto;
 import modelo.TipoJoia;
 
@@ -169,7 +170,10 @@ public class TelaNovoProduto extends javax.swing.JInternalFrame {
     private void btnVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVoltar1ActionPerformed
-
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2); 
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvarNovoProduto;

@@ -177,7 +177,7 @@ public class TelaProduto extends javax.swing.JInternalFrame {
         TelaNovoProduto telaNovoProd = new TelaNovoProduto();
         painelDP.add(telaNovoProd);
         telaNovoProd.setVisible(true);
-        this.setVisible(false);          
+        telaNovoProd.setPosicao();
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
