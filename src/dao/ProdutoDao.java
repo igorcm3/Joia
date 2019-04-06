@@ -55,7 +55,7 @@ public class ProdutoDao {
         conecta = new Conecta();
         conecta.iniciaConexao();
         
-        String sql = "UPDATE `JoalheriaJoia`.`Produto` SET `codigo`=?, `nome`=?, `custo`=?, `venda`=?, `idTipoJoia`=?,`idProduto`=?;";
+        String sql = "UPDATE `JoalheriaJoia`.`Produto` SET `codigo`=?, `nome`=?, `custo`=?, `venda`=?, `idTipoJoia`=? WHERE `idProduto`=?;";
        
         try {
             PreparedStatement pstm;
@@ -78,7 +78,7 @@ public class ProdutoDao {
         conecta = new Conecta();
         conecta.iniciaConexao();
         
-        String sql = "DELETE ON CASCADE FROM `JoalheriaJoia`.`Produto` WHERE idProduto = ? ; ";
+        String sql = "DELETE FROM `JoalheriaJoia`.`Produto` WHERE idProduto = ? ; ";
         List<Produto>  lista = new ArrayList<Produto>();
         int id = 0;
        

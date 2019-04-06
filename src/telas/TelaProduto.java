@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 import modelo.Estoque;
 import modelo.Produto;
+import modelo.TipoJoia;
 
 /**
  *
@@ -29,6 +30,9 @@ public class TelaProduto extends javax.swing.JInternalFrame {
     public TelaProduto() {
         initComponents();
         System.out.println("Clickou em Produto");
+        atualizaTabela();
+        
+        /*
         dtm = (DefaultTableModel) tabela.getModel();
         ProdutoDao dao = new ProdutoDao();
         listaProduto = dao.getProduto();
@@ -39,7 +43,7 @@ public class TelaProduto extends javax.swing.JInternalFrame {
             dtm.insertRow(dtm.getRowCount(), new Object[]{produto.getCodigo(),produto.getNome(),produto.getCusto(),produto.getVenda(),estoque.getQuantidade(),produto.getTipoJoia().getDescricao()});    
             
             
-        }
+        }*/
     }
 
     /**
@@ -164,6 +168,22 @@ public class TelaProduto extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     
+    
+    public void atualizaTabela(){
+        dtm = (DefaultTableModel) tabela.getModel();
+        ProdutoDao dao = new ProdutoDao();
+        listaProduto = dao.getProduto();
+        Estoque estoque = new Estoque();
+        estoque.setQuantidade(10);
+        // fazer dao estoque para pegar o estoque desse produto pela Fk
+        for (Produto produto : listaProduto){
+            dtm.insertRow(dtm.getRowCount(), new Object[]{produto.getCodigo(),produto.getNome(),produto.getCusto(),produto.getVenda(),estoque.getQuantidade(),produto.getTipoJoia().getDescricao()});    
+            
+            
+        }
+                
+                
+    }
    public void setPainelDP(javax.swing.JDesktopPane panel){
        
        this.painelDP = panel;
@@ -191,6 +211,33 @@ public class TelaProduto extends javax.swing.JInternalFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
+        
+        if(!tabela.getSelectionModel().isSelectionEmpty()){
+            Produto produto = new Produto();
+            int linha = 0;
+            ProdutoDao produtoDao = new ProdutoDao();
+            List<Produto> listaProduto = new ArrayList<Produto>();
+            listaProduto = produtoDao.getProduto();
+
+            for (Produto p : listaProduto){
+                if(p.getCodigo().equals(tabela.getValueAt(tabela.getSelectedRow(), 0))){
+                    linha = tabela.getSelectedRow();
+                    produto = p;
+                }
+
+            }
+
+            TipoJoia tipoJoia = new TipoJoia();
+            
+            produto.setCodigo(tabela.getValueAt(linha, 1).toString());
+            produto.setNome(tabela.getValueAt(linha, 2).toString());
+            produto.setCusto(Float.parseFloat(tabela.getValueAt(linha, 3).toString()));
+            produto.setVenda(Float.parseFloat(tabela.getValueAt(linha, 4).toString()));
+            tipoJoia.setIdTipoJoia(Integer.parseInt(tabela.getValueAt(linha, 5).toString()));
+            produto.setTipoJoia(tipoJoia);
+            produtoDao.alteraProduto(produto);
+            this.setVisible(false);
+        }        
     }//GEN-LAST:event_btnEditarActionPerformed
     
     

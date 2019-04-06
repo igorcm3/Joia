@@ -14,7 +14,7 @@ import modelo.TipoJoia;
  *
  * @author coron
  */
-public class TelaNovoProduto extends javax.swing.JInternalFrame {
+public class TelaNovoProduto extends javax.swing.JInternalFrame{
 
     /**
      * Creates new form TelaNovoProduto
@@ -164,7 +164,7 @@ public class TelaNovoProduto extends javax.swing.JInternalFrame {
         tipoJoia.setIdTipoJoia(Integer.parseInt(txtTipoJoia.getText()));
         Produto produto = new Produto(txtCodigo.getText(), txtNome.getText(),tipoJoia, Float.parseFloat(txtCusto.getText()),Float.parseFloat(txtVenda.getText()));
         produtoDao.salvaProduto(produto);
-        System.out.println("Salvou produto: "+produto.getNome()+" cod: "+produto.getCodigo());  
+        System.out.println("Salvou produto: "+produto.getNome()+" cod: "+produto.getCodigo());
     }//GEN-LAST:event_btnSalvarNovoProdutoActionPerformed
 
     private void btnVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar1ActionPerformed
