@@ -25,7 +25,7 @@ public class TelaNovoCliente extends javax.swing.JInternalFrame {
          ClienteDao dao = new ClienteDao();
         List<Cliente> listaCliente  = new ArrayList<Cliente>();
         listaCliente = dao.getCliente();
-        String codigo = "500";
+        String codigo = "00";
         
         for (Cliente c : listaCliente){
             codigo = "0"+String.valueOf(c.getIdCliente()+1);

@@ -78,7 +78,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="btnServicos" min="-2" pref="111" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnAgendamento" min="-2" pref="111" max="-2" attributes="0"/>
+                              <Component id="btnAgendamento" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnSair" min="-2" pref="111" max="-2" attributes="0"/>
                           </Group>

@@ -86,6 +86,11 @@ public class TelaProduto extends javax.swing.JInternalFrame {
                 return types [columnIndex];
             }
         });
+        tabela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabela);
         if (tabela.getColumnModel().getColumnCount() > 0) {
             tabela.getColumnModel().getColumn(0).setResizable(false);
@@ -94,6 +99,7 @@ public class TelaProduto extends javax.swing.JInternalFrame {
         }
 
         btnEditar.setText("Editar");
+        btnEditar.setEnabled(false);
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
@@ -108,6 +114,7 @@ public class TelaProduto extends javax.swing.JInternalFrame {
         });
 
         btnExcluir.setText("Excluir");
+        btnExcluir.setEnabled(false);
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
@@ -239,6 +246,11 @@ public class TelaProduto extends javax.swing.JInternalFrame {
             this.setVisible(false);
         }        
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
+        btnEditar.setEnabled(true);
+        btnExcluir.setEnabled(true);
+    }//GEN-LAST:event_tabelaMouseClicked
     
     
     
