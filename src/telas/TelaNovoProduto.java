@@ -100,6 +100,8 @@ public class TelaNovoProduto extends javax.swing.JInternalFrame{
 
         jLabel7.setText("Quantidade estoque:");
 
+        txtEstoque.setText("0");
+
         lbCodigo.setBackground(new java.awt.Color(254, 254, 254));
         lbCodigo.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         lbCodigo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -191,37 +193,39 @@ public class TelaNovoProduto extends javax.swing.JInternalFrame{
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarNovoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarNovoProdutoActionPerformed
-        ProdutoDao produtoDao = new ProdutoDao();
-        int idTipo = 0;
-        TipoJoia tipoJoia = new TipoJoia();
-        TipoJoiaDao daoTipo = new TipoJoiaDao();
-        
-        for (TipoJoia tipo : daoTipo.getTipo()){
-            if (comboTipoJoia.getSelectedItem().toString().equals(tipo.getDescricao()))
-                idTipo = tipo.getIdTipoJoia();
+        if(!txtNome.getText().equals("") && !txtCusto.getText().equals("") && !txtVenda.getText().equals("") && !txtEstoque.getText().equals("")){
+            ProdutoDao produtoDao = new ProdutoDao();
+            int idTipo = 0;
+            TipoJoia tipoJoia = new TipoJoia();
+            TipoJoiaDao daoTipo = new TipoJoiaDao();
+
+            for (TipoJoia tipo : daoTipo.getTipo()){
+                if (comboTipoJoia.getSelectedItem().toString().equals(tipo.getDescricao()))
+                    idTipo = tipo.getIdTipoJoia();
+            }
+
+            tipoJoia.setIdTipoJoia(idTipo);
+            Produto produto = new Produto(lbCodigo.getText(), txtNome.getText(),tipoJoia, Float.parseFloat(txtCusto.getText()),Float.parseFloat(txtVenda.getText()));
+            produtoDao.salvaProduto(produto);
+
+            // salvar estoque 
+
+            EstoqueDao estoqueDao = new EstoqueDao();
+            int idP = 0;
+            for (Produto pr : produtoDao.getProduto()){
+                idP = pr.getIdProduto();
+            }
+
+            produto.setIdProduto(idP);
+            int qnt = Integer.parseInt(txtEstoque.getText().trim());
+            System.out.println("Estoque escrito  qnt   "+qnt);
+            Estoque estoque = new Estoque(qnt,produto);
+            estoqueDao.salvaEstoque(estoque);
+            txtNome.setText("");
+            txtCusto.setText("");
+            txtVenda.setText("");
+            txtEstoque.setText("");
         }
-        
-        tipoJoia.setIdTipoJoia(idTipo);
-        Produto produto = new Produto(lbCodigo.getText(), txtNome.getText(),tipoJoia, Float.parseFloat(txtCusto.getText()),Float.parseFloat(txtVenda.getText()));
-        produtoDao.salvaProduto(produto);
-        
-        // salvar estoque 
-        
-        EstoqueDao estoqueDao = new EstoqueDao();
-        int idP = 0;
-        for (Produto pr : produtoDao.getProduto()){
-            idP = pr.getIdProduto();
-        }
-        
-        produto.setIdProduto(idP);
-        int qnt = Integer.parseInt(txtEstoque.getText().trim());
-        System.out.println("Estoque escrito  qnt   "+qnt);
-        Estoque estoque = new Estoque(qnt,produto);
-        estoqueDao.salvaEstoque(estoque);
-        txtNome.setText("");
-        txtCusto.setText("");
-        txtVenda.setText("");
-        txtEstoque.setText("");
     }//GEN-LAST:event_btnSalvarNovoProdutoActionPerformed
 
     private void btnVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar1ActionPerformed
