@@ -48,6 +48,8 @@ public class TelaNovoProduto extends javax.swing.JInternalFrame{
         jLabel7 = new javax.swing.JLabel();
         txtEstoque = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         btnSalvarNovoProduto.setText("Salvar");
         btnSalvarNovoProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

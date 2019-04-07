@@ -78,43 +78,26 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="btnServicos" min="-2" pref="111" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnAgendamento" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="btnCliente" min="-2" pref="111" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnProduto" max="32767" attributes="0"/>
-                                  </Group>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="btnCliente" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnServicos" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnProduto" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="btnAgendamento" alignment="1" pref="111" max="32767" attributes="0"/>
+                                  <Component id="btnVenda" alignment="1" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="btnSair" min="-2" pref="111" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                      <Component id="btnVenda" min="-2" pref="105" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btnSair" min="-2" pref="111" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel1" min="-2" pref="269" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lbLogomarca" min="-2" pref="238" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="184" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jTabbedPane1" min="-2" pref="478" max="-2" attributes="0"/>
-                                          <Component id="jLabel2" min="-2" pref="113" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="0" pref="23" max="32767" attributes="0"/>
+                              <Component id="lbLogomarca" min="-2" pref="238" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel1" min="-2" pref="269" max="-2" attributes="0"/>
+                              <EmptySpace pref="480" max="32767" attributes="0"/>
+                              <Component id="lblHora" min="-2" pref="67" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="lblData" min="-2" pref="97" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -124,40 +107,36 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" pref="41" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lbLogomarca" min="-2" pref="238" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblData" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="lblHora" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                              <Component id="jLabel2" min="-2" pref="35" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                              <Component id="jTabbedPane1" min="-2" pref="418" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jLabel1" min="-2" pref="41" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="79" max="32767" attributes="0"/>
+                      <Component id="lbLogomarca" min="-2" pref="238" max="-2" attributes="0"/>
+                      <EmptySpace pref="173" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnSair" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnCliente" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnVenda" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnServicos" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnAgendamento" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="btnSair" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnCliente" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnProduto" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnServicos" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnAgendamento" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnVenda" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -227,18 +206,14 @@
                 <Property name="text" type="java.lang.String" value="Logomarca"/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+            <Component class="javax.swing.JLabel" name="lblData">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d0" green="2f" red="34" type="rgb"/>
-                </Property>
+                <Property name="text" type="java.lang.String" value="Data"/>
               </Properties>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
-            </Container>
-            <Component class="javax.swing.JLabel" name="jLabel2">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblHora">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Vizualiza&#xe7;&#xe3;o rapida:"/>
+                <Property name="text" type="java.lang.String" value="Hora"/>
               </Properties>
             </Component>
           </SubComponents>

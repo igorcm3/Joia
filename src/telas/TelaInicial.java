@@ -5,7 +5,9 @@
  */
 package telas;
 
-import java.beans.PropertyVetoException;
+import java.util.Date;
+import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -33,6 +35,7 @@ public class TelaInicial extends javax.swing.JFrame {
             Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
         }
         initComponents();
+        AtualizaDataHora();
         
     }
 
@@ -55,8 +58,8 @@ public class TelaInicial extends javax.swing.JFrame {
         btnSair = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lbLogomarca = new javax.swing.JLabel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jLabel2 = new javax.swing.JLabel();
+        lblData = new javax.swing.JLabel();
+        lblHora = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(254, 254, 254));
@@ -108,9 +111,9 @@ public class TelaInicial extends javax.swing.JFrame {
         lbLogomarca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/-diamond_89754.png"))); // NOI18N
         lbLogomarca.setText("Logomarca");
 
-        jTabbedPane1.setBackground(new java.awt.Color(52, 47, 208));
+        lblData.setText("Data");
 
-        jLabel2.setText("Vizualização rapida:");
+        lblHora.setText("Hora");
 
         javax.swing.GroupLayout painellCorLayout = new javax.swing.GroupLayout(painellCor);
         painellCor.setLayout(painellCorLayout);
@@ -120,64 +123,52 @@ public class TelaInicial extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(painellCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painellCorLayout.createSequentialGroup()
-                        .addGroup(painellCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(painellCorLayout.createSequentialGroup()
-                                .addComponent(btnServicos, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnAgendamento))
-                            .addGroup(painellCorLayout.createSequentialGroup()
-                                .addComponent(btnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(painellCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(painellCorLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(painellCorLayout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addComponent(btnVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGroup(painellCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnServicos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAgendamento, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                            .addComponent(btnVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(painellCorLayout.createSequentialGroup()
-                        .addGroup(painellCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(painellCorLayout.createSequentialGroup()
-                                .addComponent(lbLogomarca, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(184, 184, 184)
-                                .addGroup(painellCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 23, Short.MAX_VALUE)))
+                        .addComponent(lbLogomarca, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(painellCorLayout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 480, Short.MAX_VALUE)
+                        .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblData, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         painellCorLayout.setVerticalGroup(
             painellCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painellCorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(painellCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painellCorLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbLogomarca, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(painellCorLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                        .addGroup(painellCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblData, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(52, 52, 52))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painellCorLayout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addComponent(lbLogomarca, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
                 .addGroup(painellCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSair, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painellCorLayout.createSequentialGroup()
-                        .addGroup(painellCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnCliente)
-                            .addComponent(btnProduto)
-                            .addComponent(btnVenda))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(painellCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnServicos)
-                            .addComponent(btnAgendamento))
-                        .addGap(8, 8, 8))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painellCorLayout.createSequentialGroup()
-                        .addComponent(btnSair)
-                        .addContainerGap())))
+                        .addComponent(btnCliente)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnProduto)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnServicos)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAgendamento)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnVenda)))
+                .addContainerGap())
         );
 
         painelDP.setLayer(painellCor, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -210,6 +201,30 @@ public class TelaInicial extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    public void AtualizaDataHora(){
+   // JLabel lblData = new JLabel();
+    //JLabel lblHora = new JLabel();
+   // lblData.setBounds(10,12,70,20);
+    //lblHora.setBounds(10,37,60,20);
+    Thread th = new Thread(new Runnable() { //cria uma thread
+        public void run() {
+            while(true) { //roda indefinidamente
+                Date data = (Date) Calendar.getInstance().getTime();
+                DateFormat d = DateFormat.getDateInstance();
+                DateFormat h = DateFormat.getTimeInstance();
+                lblData.setText(d.format(data));
+                lblHora.setText(h.format(data));     
+                try {
+                    Thread.sleep(1000); //espera 1 segundo para fazer a nova evolução
+                } catch(InterruptedException ex){
+                }
+            }
+        }
+    }); th.start();    
+        
+        
+    }
     private void btnProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutoActionPerformed
         TelaProduto telaProd = new TelaProduto();
         telaProd.setPainelDP(painelDP);
@@ -277,9 +292,9 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JButton btnServicos;
     private javax.swing.JButton btnVenda;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lbLogomarca;
+    private javax.swing.JLabel lblData;
+    private javax.swing.JLabel lblHora;
     private javax.swing.JDesktopPane painelDP;
     private javax.swing.JPanel painellCor;
     // End of variables declaration//GEN-END:variables

@@ -63,6 +63,7 @@ public class TelaNovoCliente extends javax.swing.JInternalFrame {
         btnVoltar = new javax.swing.JButton();
         btnInserirr = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(242, 242, 240));
