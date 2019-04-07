@@ -36,7 +36,8 @@ public class ProdutoDao {
 
         try {
             PreparedStatement pstm;
-            pstm = conecta.getConexao().prepareStatement(sql);             
+            pstm = conecta.getConexao().prepareStatement(sql); 
+            
             pstm.setString(1, produto.getCodigo());
             pstm.setString(2, produto.getNome());
             pstm.setFloat(3, produto.getCusto());
@@ -129,9 +130,16 @@ public class ProdutoDao {
                 Float venda = rs.getFloat("venda");
                 Estoque estoque = new Estoque();
                 estoque.setQuantidade(10);
-                TipoJoia tipoJoia = new TipoJoia(); 
-                tipoJoia.setIdTipoJoia(rs.getInt("idTipoJoia"));
-               // estoque.setIdEstoque(rs.getInt("idEstoque")); 
+                
+                //localiza objeto pelo id
+                TipoJoia tipoJoia = new TipoJoia();
+                TipoJoiaDao daoT = new TipoJoiaDao();
+                int idTipoJoia = rs.getInt("idTipoJoia");
+                
+                for (TipoJoia t : daoT.getTipo()){
+                    if(t.getIdTipoJoia() == idTipoJoia)
+                        tipoJoia = t;
+                }  
                 Produto produto = new Produto(cod, nome, tipoJoia, custo, venda);
                 produto.setIdProduto(id);
                 listaProduto.add(produto);

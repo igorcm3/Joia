@@ -28,22 +28,23 @@ public class EstoqueDao {
         conecta = new Conecta();
         conecta.iniciaConexao();
         
-        String sql = "INSERT INTO `JoalheriaJoia`.`Estoque` (`quantidade`, `idProduto) VALUES (?, ?);";
+        String sql = "INSERT INTO `JoalheriaJoia`.`Estoque` (`quantidade`, `idProduto`) VALUES (?,?);";
        
         try {
             PreparedStatement pstm;
-            pstm = conecta.getConexao().prepareStatement(sql);             
-            pstm.setInt(1, estoque.getQuantidade());
-            pstm.setInt(2, estoque.getProduto().getIdProduto());
+            pstm = conecta.getConexao().prepareStatement(sql); 
             
+            pstm.setInt(1, estoque.getQuantidade());
+            System.out.println("Chega aqui");
+            pstm.setInt(2,estoque.getProduto().getIdProduto());            
             
             pstm.execute();
         } catch (SQLException ex) {
-            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EstoqueDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         conecta.fechaConexao();
     }
-    
+    /*
     
     public void alteraEstoque(Cliente cliente){
         conecta = new Conecta();
@@ -96,6 +97,7 @@ public class EstoqueDao {
         conecta.fechaConexao();
     }
     
+    */
     
     public List<Estoque> getEstoque(){
         List<Estoque> listaEstoque = new ArrayList<Estoque>();
@@ -114,15 +116,16 @@ public class EstoqueDao {
                 int id = rs.getInt("idEstoque");
                 int qnt = rs.getInt("quantidade");
                 int idP = rs.getInt("idProduto");
-                
-                Produto produto = null;
+                System.out.println("1");
+                Produto produto = new Produto();
                 ProdutoDao daoP = new ProdutoDao();
                 for (Produto p : daoP.getProduto()){
                     if(idP == p.getIdProduto())
                         produto = p;
                 }
                 conecta.iniciaConexao();
-                Estoque estoque = new Estoque(id, qnt, produto);
+                Estoque estoque = new Estoque(qnt, produto);
+                estoque.setIdEstoque(id);
                 listaEstoque.add(estoque);
                 
             }
@@ -134,8 +137,5 @@ public class EstoqueDao {
         conecta.fechaConexao();
         return listaEstoque;
     }
-    public static void main(String[] args) {
-        EstoqueDao dao = new EstoqueDao();
-        dao.getEstoque();
-    }
+  
 }

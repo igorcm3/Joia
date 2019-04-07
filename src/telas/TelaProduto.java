@@ -6,6 +6,7 @@
 package telas;
 
 import dao.ClienteDao;
+import dao.EstoqueDao;
 import dao.ProdutoDao;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +30,7 @@ public class TelaProduto extends javax.swing.JInternalFrame {
      */
     public TelaProduto() {
         initComponents();
-        System.out.println("Clickou em Produto");
-        atualizaTabela();
+        attTabelaEstoque();
         
         /*
         dtm = (DefaultTableModel) tabela.getModel();
@@ -174,13 +174,23 @@ public class TelaProduto extends javax.swing.JInternalFrame {
         estoque.setQuantidade(10);
         // fazer dao estoque para pegar o estoque desse produto pela Fk
         for (Produto produto : listaProduto){
-            dtm.insertRow(dtm.getRowCount(), new Object[]{produto.getCodigo(),produto.getNome(),produto.getCusto(),produto.getVenda(),estoque.getQuantidade(),produto.getTipoJoia().getDescricao()});    
+            dtm.insertRow(dtm.getRowCount(), new Object[]{produto.getCodigo(),produto.getNome(),produto.getCusto(),produto.getVenda(),produto.getTipoJoia().getDescricao(),"12"});    
             
             
         }
-                
-                
+                      
     }
+    
+    public void attTabelaEstoque(){
+        dtm = (DefaultTableModel) tabela.getModel();
+        EstoqueDao estoqueDao = new EstoqueDao();
+        List<Estoque> listaEstoque = new ArrayList<Estoque>();
+        listaEstoque = estoqueDao.getEstoque();
+        for (Estoque estoque : listaEstoque){
+            dtm.insertRow(dtm.getRowCount(),new Object[]{estoque.getProduto().getCodigo(),estoque.getProduto().getNome(),estoque.getProduto().getCusto(),estoque.getProduto().getVenda(),estoque.getProduto().getTipoJoia().getDescricao(),estoque.getQuantidade()});
+        }
+    }
+    
    public void setPainelDP(javax.swing.JDesktopPane panel){
        
        this.painelDP = panel;
@@ -199,7 +209,7 @@ public class TelaProduto extends javax.swing.JInternalFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         if(!tabela.getSelectionModel().isSelectionEmpty()){
-            System.out.println("o produto selecionado foi  "+tabela.getValueAt(tabela.getSelectedRow(), 1)+" Codigo  "+tabela.getValueAt(tabela.getSelectedRow(), 0));
+            
             ProdutoDao dao = new ProdutoDao();
             dao.excluiProduto(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
             this.setVisible(false);

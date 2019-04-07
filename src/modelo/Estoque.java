@@ -16,11 +16,11 @@ public class Estoque {
     public Estoque() {
     }
 
-    public Estoque(int idEstoque, int quantidade, Produto produto) {
-        this.idEstoque = idEstoque;
+    public Estoque(int quantidade, Produto produto) {
         this.quantidade = quantidade;
         this.produto = produto;
     }
+    
 
     public int getIdEstoque() {
         return idEstoque;

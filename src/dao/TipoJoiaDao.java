@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.Cliente;
+import modelo.TipoJoia;
 
 /**
  *
@@ -22,25 +23,18 @@ import modelo.Cliente;
 public class TipoJoiaDao {
     Conecta conecta;
     
-    public void salvaCliente(Cliente cliente){
+    public void salvaTipo(TipoJoia tipo){
         conecta = new Conecta();
         conecta.iniciaConexao();
         
-        String sql = "INSERT INTO `JoalheriaJoia`.`Cliente` (`codigo`, `nome`, `endereco`, `bairro`, `cidade`, `cep`, `cpf`, `uf`, `rg`, `celular`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO `JoalheriaJoia`.`TipoJoia` (`codigo`, `descricao`) VALUES (?, ?);";
        
         try {
             PreparedStatement pstm;
             pstm = conecta.getConexao().prepareStatement(sql);             
-            pstm.setString(1, cliente.getCodigo());
-            pstm.setString(2, cliente.getNome());
-            pstm.setString(3, cliente.getEndereco());
-            pstm.setString(4, cliente.getBairro());
-            pstm.setString(5, cliente.getCidade());
-            pstm.setString(6, cliente.getCep());
-            pstm.setString(7, cliente.getCpf());
-            pstm.setString(8, cliente.getUf());
-            pstm.setString(9, cliente.getRg());
-            pstm.setString(10, cliente.getCelular());
+            pstm.setString(1, tipo.getCodigo());
+            pstm.setString(2, tipo.getDescricao());
+            
             
             pstm.execute();
         } catch (SQLException ex) {
@@ -48,9 +42,9 @@ public class TipoJoiaDao {
         }
         conecta.fechaConexao();
     }
+    /*
     
-    
-    public void alteraCliente(Cliente cliente){
+    public void alteraTipo(Cliente cliente){
         conecta = new Conecta();
         conecta.iniciaConexao();
         
@@ -112,12 +106,12 @@ public class TipoJoiaDao {
         conecta.fechaConexao();
     }
     
-    
-    public List<Cliente> getCliente(){
-        List<Cliente> listaCliente = new ArrayList<Cliente>();
+    */
+    public List<TipoJoia> getTipo(){
+        List<TipoJoia> listaTipo = new ArrayList<TipoJoia>();
         conecta = new Conecta();
         conecta.iniciaConexao();
-        String sql = "SELECT * FROM JoalheriaJoia.Cliente;";
+        String sql = "SELECT * FROM JoalheriaJoia.TipoJoia;";
         ResultSet rs;
         
         PreparedStatement pstm;
@@ -127,21 +121,14 @@ public class TipoJoiaDao {
             rs = pstm.executeQuery();
            
             while(rs.next()){
-                int id = rs.getInt("idCliente");
+                int id = rs.getInt("idTipoJoia");
                 String cod = rs.getString("codigo");
-                String nome = rs.getString("nome");
-                String endereco = rs.getString("endereco");
-                String bairro = rs.getString("bairro");
-                String cidade = rs.getString("cidade");
-                String cep = rs.getString("cep");
-                String cpf = rs.getString("cpf");
-                String uf = rs.getString("uf");
-                String rg = rs.getString("rg");
-                String cel = rs.getString("celular");
+                String descricao = rs.getString("descricao");
                 
-                Cliente cliente = new Cliente(cod, nome, endereco, bairro, cidade, cep, cpf, uf, rg, cel);
-                cliente.setIdCliente(id);
-                listaCliente.add(cliente);
+                TipoJoia tipo = new TipoJoia(cod, descricao);
+                tipo.setIdTipoJoia(id);
+                
+                listaTipo.add(tipo);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -149,6 +136,6 @@ public class TipoJoiaDao {
         
         
         conecta.fechaConexao();
-        return listaCliente;
+        return listaTipo;
     }
 }
