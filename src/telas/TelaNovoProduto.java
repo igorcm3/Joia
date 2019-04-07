@@ -33,7 +33,8 @@ public class TelaNovoProduto extends javax.swing.JInternalFrame{
         String codigo = "00";
         
         for (Produto p : listaProduto){
-            codigo = "00"+String.valueOf(Integer.parseInt(p.getCodigo())+1);
+            codigo = "00"+String.valueOf((p.getIdProduto())+1);
+            
         }
         lbCodigo.setText(codigo);
         
