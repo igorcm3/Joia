@@ -130,7 +130,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        btnNovoCliente.setText("Novo Cliente");
+        btnNovoCliente.setText("Novo ");
         btnNovoCliente.setPreferredSize(new java.awt.Dimension(63, 23));
         btnNovoCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,7 +138,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
             }
         });
 
-        btnAlterar.setText("Alterar");
+        btnAlterar.setText("Editar");
         btnAlterar.setEnabled(false);
         btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,11 +168,11 @@ public class TelaCliente extends javax.swing.JInternalFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnNovoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnNovoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnAlterar)
+                .addGap(18, 18, 18)
+                .addComponent(btnRemover)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -190,7 +190,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
                 .addGap(22, 22, 22))
         );
 
-        pack();
+        setBounds(0, 0, 942, 691);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed

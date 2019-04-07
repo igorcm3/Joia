@@ -109,10 +109,10 @@ public class TelaNovoProduto extends javax.swing.JInternalFrame{
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(352, Short.MAX_VALUE)
+                    .addContainerGap(358, Short.MAX_VALUE)
                     .addComponent(btnVoltar1)
                     .addGap(45, 45, 45)))
         );
@@ -145,17 +145,17 @@ public class TelaNovoProduto extends javax.swing.JInternalFrame{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 168, Short.MAX_VALUE)
                 .addComponent(btnSalvarNovoProduto)
                 .addGap(25, 25, 25))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(339, Short.MAX_VALUE)
+                    .addContainerGap(473, Short.MAX_VALUE)
                     .addComponent(btnVoltar1)
                     .addGap(24, 24, 24)))
         );
 
-        pack();
+        setBounds(0, 0, 480, 550);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarNovoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarNovoProdutoActionPerformed

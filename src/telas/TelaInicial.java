@@ -8,6 +8,8 @@ package telas;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -19,6 +21,17 @@ public class TelaInicial extends javax.swing.JFrame {
      * Creates new form TelaInicial
      */
     public TelaInicial() {
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+        }
         initComponents();
         
     }
@@ -42,6 +55,8 @@ public class TelaInicial extends javax.swing.JFrame {
         btnSair = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lbLogomarca = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(254, 254, 254));
@@ -49,7 +64,7 @@ public class TelaInicial extends javax.swing.JFrame {
         painelDP.setBackground(new java.awt.Color(204, 255, 255));
         painelDP.setForeground(new java.awt.Color(204, 255, 255));
 
-        painellCor.setBackground(new java.awt.Color(224, 247, 246));
+        painellCor.setBackground(new java.awt.Color(226, 233, 255));
 
         btnCliente.setText("Cliente");
         btnCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +108,10 @@ public class TelaInicial extends javax.swing.JFrame {
         lbLogomarca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/-diamond_89754.png"))); // NOI18N
         lbLogomarca.setText("Logomarca");
 
+        jTabbedPane1.setBackground(new java.awt.Color(52, 47, 208));
+
+        jLabel2.setText("Vizualização rapida:");
+
         javax.swing.GroupLayout painellCorLayout = new javax.swing.GroupLayout(painellCor);
         painellCor.setLayout(painellCorLayout);
         painellCorLayout.setHorizontalGroup(
@@ -101,34 +120,50 @@ public class TelaInicial extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(painellCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painellCorLayout.createSequentialGroup()
-                        .addComponent(btnServicos, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAgendamento)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(painellCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(painellCorLayout.createSequentialGroup()
+                                .addComponent(btnServicos, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnAgendamento))
+                            .addGroup(painellCorLayout.createSequentialGroup()
+                                .addComponent(btnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(painellCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(painellCorLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(painellCorLayout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(btnVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(painellCorLayout.createSequentialGroup()
-                        .addComponent(btnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(painellCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(painellCorLayout.createSequentialGroup()
+                                .addComponent(lbLogomarca, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(184, 184, 184)
+                                .addGroup(painellCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 23, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(painellCorLayout.createSequentialGroup()
-                .addGap(337, 337, 337)
-                .addGroup(painellCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbLogomarca, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(337, Short.MAX_VALUE))
         );
         painellCorLayout.setVerticalGroup(
             painellCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painellCorLayout.createSequentialGroup()
-                .addGap(74, 74, 74)
+                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lbLogomarca, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 255, Short.MAX_VALUE)
+                .addGroup(painellCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painellCorLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbLogomarca, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painellCorLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addGroup(painellCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painellCorLayout.createSequentialGroup()
                         .addGroup(painellCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -171,7 +206,8 @@ public class TelaInicial extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(959, 730));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutoActionPerformed
@@ -241,6 +277,8 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JButton btnServicos;
     private javax.swing.JButton btnVenda;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lbLogomarca;
     private javax.swing.JDesktopPane painelDP;
     private javax.swing.JPanel painellCor;

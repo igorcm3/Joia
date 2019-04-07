@@ -127,28 +127,22 @@ public class TelaProduto extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 908, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 908, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnNovo)
+                        .addGap(18, 18, 18)
                         .addComponent(btnEditar)
                         .addGap(18, 18, 18)
                         .addComponent(btnExcluir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(20, 20, 20)
-                    .addComponent(btnNovo)
-                    .addContainerGap(851, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,21 +151,17 @@ public class TelaProduto extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnEditar)
-                        .addComponent(btnExcluir))
-                    .addComponent(btnVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(627, Short.MAX_VALUE)
-                    .addComponent(btnNovo)
-                    .addContainerGap()))
+                        .addComponent(btnExcluir)
+                        .addComponent(btnNovo))
+                    .addComponent(btnVoltar))
+                .addGap(36, 36, 36))
         );
 
-        pack();
+        setBounds(0, 0, 944, 695);
     }// </editor-fold>//GEN-END:initComponents
     
     
