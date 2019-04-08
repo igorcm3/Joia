@@ -56,7 +56,7 @@ public class ProdutoDao {
         conecta = new Conecta();
         conecta.iniciaConexao();
         
-        String sql = "UPDATE `JoalheriaJoia`.`Produto` SET `codigo`=?, `nome`=?, `custo`=?, `venda`=?, `idTipoJoia`=? WHERE `idProduto`=?;";
+        String sql = "UPDATE `JoalheriaJoia`.`Produto` SET `codigo`=?, `nome`=?, `custo`=?, `venda`=? WHERE `idProduto`=?;";
        
         try {
             PreparedStatement pstm;
@@ -65,8 +65,8 @@ public class ProdutoDao {
             pstm.setString(2, produto.getNome());
             pstm.setFloat(3, produto.getCusto());
             pstm.setFloat(4, produto.getVenda());
-            pstm.setInt(5, produto.getTipoJoia().getIdTipoJoia());
-            pstm.setInt(6,produto.getIdProduto());
+           
+            pstm.setInt(5,produto.getIdProduto());
             pstm.execute();
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);

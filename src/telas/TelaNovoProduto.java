@@ -11,6 +11,7 @@ import dao.TipoJoiaDao;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 import modelo.Estoque;
 import modelo.Produto;
 import modelo.TipoJoia;
@@ -20,14 +21,16 @@ import modelo.TipoJoia;
  * @author coron
  */
 public class TelaNovoProduto extends javax.swing.JInternalFrame{
-
+    private DefaultTableModel dt;
+      
+    
     /**
      * Creates new form TelaNovoProduto
      */
     public TelaNovoProduto() {
         initComponents();
         ProdutoDao daoP = new ProdutoDao();
-       
+  
         List<Produto> listaProduto = new ArrayList<Produto>();
         listaProduto = daoP.getProduto();
         String codigo = "00";
@@ -216,9 +219,22 @@ public class TelaNovoProduto extends javax.swing.JInternalFrame{
             txtCusto.setText("");
             txtVenda.setText("");
             txtEstoque.setText("");
+            
+            // atualiza tabela
+            dt.setRowCount(0);
+            List<Estoque> listaEstoque = new ArrayList<Estoque>();
+            listaEstoque = estoqueDao.getEstoque();
+            for (Estoque es : listaEstoque){
+                dt.insertRow(dt.getRowCount(),new Object[]{es.getProduto().getCodigo(),es.getProduto().getNome(),es.getProduto().getCusto(),es.getProduto().getVenda(),es.getProduto().getTipoJoia().getDescricao(),es.getQuantidade()});
+            }
         }
     }//GEN-LAST:event_btnSalvarNovoProdutoActionPerformed
 
+    public void setDt(DefaultTableModel dt) {
+        this.dt = dt;
+    }
+
+    
     private void btnVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar1ActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_btnVoltar1ActionPerformed
@@ -226,6 +242,7 @@ public class TelaNovoProduto extends javax.swing.JInternalFrame{
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2); 
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvarNovoProduto;

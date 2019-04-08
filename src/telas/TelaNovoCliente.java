@@ -8,6 +8,7 @@ package telas;
 import dao.ClienteDao;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 
 /**
@@ -16,6 +17,7 @@ import modelo.Cliente;
  */
 public class TelaNovoCliente extends javax.swing.JInternalFrame {
 
+    private DefaultTableModel dt;
     /**
      * Creates new form TelaNovoCliente
      */
@@ -231,6 +233,11 @@ public class TelaNovoCliente extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setDt(DefaultTableModel dt) {
+        this.dt = dt;
+    }
+    
+    
     private void campoEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoEnderecoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoEnderecoActionPerformed
@@ -257,6 +264,14 @@ public class TelaNovoCliente extends javax.swing.JInternalFrame {
         Cliente cliente = new Cliente(codigo, campoNome.getText(), campoEndereco.getText(), campoBairro.getText(), campoCidade.getText(), campoCep.getText(), campoCpf.getText(), campoUf.getText(), campoRg.getText(), campoCelular.getText());
         dao.salvaCliente(cliente);
         this.setVisible(false);
+        
+        dt.setRowCount(0);
+        
+        listaCliente = dao.getCliente();
+    
+        for (Cliente c : listaCliente){
+            dt.insertRow(dt.getRowCount(), new Object[]{c.getCodigo(),c.getNome(),c.getEndereco(),c.getBairro(),c.getCidade(),c.getCep(),c.getCpf(),c.getUf(),c.getRg(),c.getCelular()});
+        }
     }//GEN-LAST:event_btnInserirrActionPerformed
 
     private void campoRgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoRgActionPerformed

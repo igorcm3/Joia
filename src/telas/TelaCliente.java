@@ -197,16 +197,22 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         TelaNovoCliente telaNovoCliente = new TelaNovoCliente();
         paineu.add(telaNovoCliente);
         telaNovoCliente.setVisible(true);
-        //this.setVisible(false);  
+        
+        telaNovoCliente.setDt(dtm);
     }//GEN-LAST:event_btnNovoClienteActionPerformed
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
-         if(!tabela.getSelectionModel().isSelectionEmpty()){
+        if(!tabela.getSelectionModel().isSelectionEmpty()){
+            ClienteDao dao = new ClienteDao();
+            dao.exccluiCliente(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
         
-        ClienteDao dao = new ClienteDao();
-        dao.exccluiCliente(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
-        this.setVisible(false);
-         }
+            dtm.setRowCount(0);
+            listaCliente = dao.getCliente();
+    
+            for (Cliente cliente : listaCliente){
+                dtm.insertRow(dtm.getRowCount(), new Object[]{cliente.getCodigo(),cliente.getNome(),cliente.getEndereco(),cliente.getBairro(),cliente.getCidade(),cliente.getCep(),cliente.getCpf(),cliente.getUf(),cliente.getRg(),cliente.getCelular()});
+            }
+        }
     }//GEN-LAST:event_btnRemoverActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
@@ -234,7 +240,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
             cliente.setUf(tabela.getValueAt(linha, 7).toString());
             cliente.setRg(tabela.getValueAt(linha, 8).toString());
             clienteDao.alteraCliente(cliente);
-            this.setVisible(false);
+            
         }
     }//GEN-LAST:event_btnAlterarActionPerformed
 

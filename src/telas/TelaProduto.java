@@ -28,6 +28,7 @@ public class TelaProduto extends javax.swing.JInternalFrame {
    private DefaultTableModel dtm;
    private List<Produto> listaProduto = new ArrayList<Produto>();  
    private javax.swing.JDesktopPane painelDP;
+   
     /**
      * Creates new form TelaProduto
      */
@@ -86,9 +87,16 @@ public class TelaProduto extends javax.swing.JInternalFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.Object.class, java.lang.Object.class
             };
+            boolean[] canEdit = new boolean [] {
+                true, true, true, true, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         tabela.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -100,7 +108,10 @@ public class TelaProduto extends javax.swing.JInternalFrame {
         if (tabela.getColumnModel().getColumnCount() > 0) {
             tabela.getColumnModel().getColumn(0).setResizable(false);
             tabela.getColumnModel().getColumn(1).setResizable(false);
+            tabela.getColumnModel().getColumn(2).setResizable(false);
             tabela.getColumnModel().getColumn(3).setResizable(false);
+            tabela.getColumnModel().getColumn(4).setResizable(false);
+            tabela.getColumnModel().getColumn(5).setResizable(false);
         }
 
         btnNovo.setText("Novo");
@@ -207,6 +218,7 @@ public class TelaProduto extends javax.swing.JInternalFrame {
             Thread th = new Thread(new Runnable() { //cria uma thread
         public void run() {
             while(true) { //roda indefinidamente
+                
                     dtm = (DefaultTableModel) tabela.getModel();
                     
                     attTabelaEstoque();
@@ -228,6 +240,7 @@ public class TelaProduto extends javax.swing.JInternalFrame {
         for (Estoque estoque : listaEstoque){
             dtm.insertRow(dtm.getRowCount(),new Object[]{estoque.getProduto().getCodigo(),estoque.getProduto().getNome(),estoque.getProduto().getCusto(),estoque.getProduto().getVenda(),estoque.getProduto().getTipoJoia().getDescricao(),estoque.getQuantidade()});
         }
+        
     }
     
    public void setPainelDP(javax.swing.JDesktopPane panel){
@@ -244,6 +257,7 @@ public class TelaProduto extends javax.swing.JInternalFrame {
         painelDP.add(telaNovoProd);
         telaNovoProd.setVisible(true);
         telaNovoProd.setPosicao();
+        telaNovoProd.setDt(dtm);
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -251,7 +265,9 @@ public class TelaProduto extends javax.swing.JInternalFrame {
             
             ProdutoDao dao = new ProdutoDao();
             dao.excluiProduto(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
-            this.setVisible(false);
+            //this.setVisible(false);
+            // dtm.setRowCount(0);
+            // attTabelaEstoque();
           }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
@@ -266,29 +282,31 @@ public class TelaProduto extends javax.swing.JInternalFrame {
             listaProduto = produtoDao.getProduto();
 
             for (Produto p : listaProduto){
-                if(p.getCodigo().equals(tabela.getValueAt(tabela.getSelectedRow(), 0))){
-                    linha = tabela.getSelectedRow();
+                if(p.getCodigo().equals(tabela.getValueAt(tabela.getSelectedRow(), 0))){                    
                     produto = p;
                 }
 
             }
-
+            
+            linha = tabela.getSelectedRow();
             TipoJoia tipoJoia = new TipoJoia();
             
-            produto.setCodigo(tabela.getValueAt(linha, 1).toString());
-            produto.setNome(tabela.getValueAt(linha, 2).toString());
-            produto.setCusto(Float.parseFloat(tabela.getValueAt(linha, 3).toString()));
-            produto.setVenda(Float.parseFloat(tabela.getValueAt(linha, 4).toString()));
-            tipoJoia.setIdTipoJoia(Integer.parseInt(tabela.getValueAt(linha, 5).toString()));
+            produto.setCodigo(tabela.getValueAt(linha, 0).toString());
+            produto.setNome(tabela.getValueAt(linha, 1).toString());
+            produto.setCusto(Float.parseFloat(tabela.getValueAt(linha, 2).toString()));
+            produto.setVenda(Float.parseFloat(tabela.getValueAt(linha, 3).toString()));
+            //tipoJoia.setIdTipoJoia(Integer.parseInt(tabela.getValueAt(linha, 5).toString()));
             produto.setTipoJoia(tipoJoia);
             produtoDao.alteraProduto(produto);
-            this.setVisible(false);
+            
+            // dtm.setRowCount(0);
+            // attTabelaEstoque();
         }        
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
         btnEditar.setEnabled(true);
-        btnExcluir.setEnabled(true);
+       // btnExcluir.setEnabled(true);
     }//GEN-LAST:event_tabelaMouseClicked
     
     
