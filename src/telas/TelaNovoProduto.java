@@ -183,6 +183,7 @@ public class TelaNovoProduto extends javax.swing.JInternalFrame{
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarNovoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarNovoProdutoActionPerformed
+        
         if(!txtNome.getText().equals("") && !txtCusto.getText().equals("") && !txtVenda.getText().equals("") && !txtEstoque.getText().equals("")){
             ProdutoDao produtoDao = new ProdutoDao();
             int idTipo = 0;
