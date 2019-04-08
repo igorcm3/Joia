@@ -261,14 +261,21 @@ public class TelaProduto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        if(!tabela.getSelectionModel().isSelectionEmpty()){
-            
+        EstoqueDao daoE = new EstoqueDao();
+        int idE = 0;
+        for (Estoque e : daoE.getEstoque()){
+            if(e.getProduto().getNome().equals(dtm.getValueAt(tabela.getSelectedRow(), 1).toString())){
+                idE = e.getIdEstoque();
+                daoE.excluiE(idE);
+              }
+        }
+        
             ProdutoDao dao = new ProdutoDao();
             dao.excluiProduto(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
-            //this.setVisible(false);
-            // dtm.setRowCount(0);
-            // attTabelaEstoque();
-          }
+            dtm.setRowCount(0);
+            attTabelaEstoque();
+            
+          
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
@@ -306,7 +313,7 @@ public class TelaProduto extends javax.swing.JInternalFrame {
 
     private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
         btnEditar.setEnabled(true);
-       // btnExcluir.setEnabled(true);
+        btnExcluir.setEnabled(true);
     }//GEN-LAST:event_tabelaMouseClicked
     
     

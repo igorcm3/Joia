@@ -74,14 +74,12 @@ public class EstoqueDao {
         conecta.fechaConexao();
     }
     
-    
-    public void excluiE(String codi){
+    */
+    public void excluiE(int id){
         conecta = new Conecta();
         conecta.iniciaConexao();
         
         String sql = "DELETE FROM `JoalheriaJoia`.`Estoque` WHERE idEstoque = ? ; ";
-        
-        int id = 0;
 
         
         try {
@@ -97,7 +95,7 @@ public class EstoqueDao {
         conecta.fechaConexao();
     }
     
-    */
+    
     
     public List<Estoque> getEstoque(){
         List<Estoque> listaEstoque = new ArrayList<Estoque>();
