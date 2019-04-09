@@ -49,20 +49,24 @@ public class TelaInicial extends javax.swing.JFrame {
         lbLogomarca = new javax.swing.JLabel();
         lblData = new javax.swing.JLabel();
         lblHora = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        menuNovo = new javax.swing.JMenu();
+        menuTipoJoia = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Joalheria Joia");
         setBackground(new java.awt.Color(254, 254, 254));
-        setPreferredSize(new java.awt.Dimension(945, 600));
+        setPreferredSize(new java.awt.Dimension(945, 620));
         setResizable(false);
         setSize(new java.awt.Dimension(943, 595));
 
         painelDP.setBackground(new java.awt.Color(204, 255, 255));
         painelDP.setForeground(new java.awt.Color(204, 255, 255));
-        painelDP.setPreferredSize(new java.awt.Dimension(943, 595));
+        painelDP.setPreferredSize(new java.awt.Dimension(943, 615));
 
         painellCor.setBackground(new java.awt.Color(226, 233, 255));
-        painellCor.setPreferredSize(new java.awt.Dimension(943, 595));
+        painellCor.setPreferredSize(new java.awt.Dimension(943, 615));
 
         btnCliente.setText("Cliente");
         btnCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -151,7 +155,7 @@ public class TelaInicial extends javax.swing.JFrame {
                         .addComponent(lbLogomarca)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addComponent(btnCliente)
                 .addGap(18, 18, 18)
                 .addComponent(btnProduto)
@@ -178,6 +182,23 @@ public class TelaInicial extends javax.swing.JFrame {
             painelDPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(painellCor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        menuNovo.setText("Novo");
+
+        menuTipoJoia.setText("Tipo joia");
+        menuTipoJoia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuTipoJoiaActionPerformed(evt);
+            }
+        });
+        menuNovo.add(menuTipoJoia);
+
+        jMenuBar1.add(menuNovo);
+
+        jMenu2.setText("Ajuda");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -242,6 +263,12 @@ public class TelaInicial extends javax.swing.JFrame {
         sair.setVisible(true);
     }//GEN-LAST:event_btnSairActionPerformed
 
+    private void menuTipoJoiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuTipoJoiaActionPerformed
+        TelaNovoTipoJoia tj = new TelaNovoTipoJoia();
+        painelDP.add(tj);
+        tj.setVisible(true);
+    }//GEN-LAST:event_menuTipoJoiaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -286,9 +313,13 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JButton btnServicos;
     private javax.swing.JButton btnVenda;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel lbLogomarca;
     private javax.swing.JLabel lblData;
     private javax.swing.JLabel lblHora;
+    private javax.swing.JMenu menuNovo;
+    private javax.swing.JMenuItem menuTipoJoia;
     private javax.swing.JDesktopPane painelDP;
     private javax.swing.JPanel painellCor;
     // End of variables declaration//GEN-END:variables
