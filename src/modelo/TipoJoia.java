@@ -12,7 +12,8 @@ package modelo;
 public class TipoJoia {
  
     private int idTipoJoia;
-    private String codigo, descricao;
+    private String descricao;
+    private String codigo;
 
     public TipoJoia() {
     }

@@ -11,19 +11,24 @@ package modelo;
  */
 public class Produto {
     private int idProduto;
-    private String codigo,nome;
     private TipoJoia tipoJoia;
-    private float custo,venda;
+    private String codigo;
+    private String nome;   
+    private float valorCusto;
+    private float valorVenda;
+    private int quantidadeEstoque;
 
     public Produto() {
     }
 
-    public Produto(String codigo, String nome, TipoJoia tipoJoia, float custo, float venda) {
+    public Produto(int idProduto, TipoJoia tipoJoia, String codigo, String nome, float valorCusto, float valorVenda, int quantidadeEstoque) {
+        this.idProduto = idProduto;
+        this.tipoJoia = tipoJoia;
         this.codigo = codigo;
         this.nome = nome;
-        this.tipoJoia = tipoJoia;
-        this.custo = custo;
-        this.venda = venda;
+        this.valorCusto = valorCusto;
+        this.valorVenda = valorVenda;
+        this.quantidadeEstoque = quantidadeEstoque;
     }
 
     public int getIdProduto() {
@@ -32,6 +37,14 @@ public class Produto {
 
     public void setIdProduto(int idProduto) {
         this.idProduto = idProduto;
+    }
+
+    public TipoJoia getTipoJoia() {
+        return tipoJoia;
+    }
+
+    public void setTipoJoia(TipoJoia tipoJoia) {
+        this.tipoJoia = tipoJoia;
     }
 
     public String getCodigo() {
@@ -50,29 +63,30 @@ public class Produto {
         this.nome = nome;
     }
 
-    public TipoJoia getTipoJoia() {
-        return tipoJoia;
+    public float getValorCusto() {
+        return valorCusto;
     }
 
-    public void setTipoJoia(TipoJoia tipoJoia) {
-        this.tipoJoia = tipoJoia;
+    public void setValorCusto(float valorCusto) {
+        this.valorCusto = valorCusto;
     }
 
-    public float getCusto() {
-        return custo;
+    public float getValorVenda() {
+        return valorVenda;
     }
 
-    public void setCusto(float custo) {
-        this.custo = custo;
+    public void setValorVenda(float valorVenda) {
+        this.valorVenda = valorVenda;
     }
 
-    public float getVenda() {
-        return venda;
+    public int getQuantidadeEstoque() {
+        return quantidadeEstoque;
     }
 
-    public void setVenda(float venda) {
-        this.venda = venda;
+    public void setQuantidadeEstoque(int quantidadeEstoque) {
+        this.quantidadeEstoque = quantidadeEstoque;
     }
+
     
-    
+
 }
