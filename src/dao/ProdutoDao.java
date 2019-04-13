@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import modelo.Estoque;
 import modelo.Produto;
 import modelo.TipoJoia;
 
@@ -40,8 +39,8 @@ public class ProdutoDao {
             
             pstm.setString(1, produto.getCodigo());
             pstm.setString(2, produto.getNome());
-            pstm.setFloat(3, produto.getCusto());
-            pstm.setFloat(4, produto.getVenda());
+            pstm.setFloat(3, produto.getValorCusto());
+            pstm.setFloat(4, produto.getValorVenda());
             pstm.setInt(5, produto.getTipoJoia().getIdTipoJoia());
             pstm.execute();
         } catch (SQLException ex) {
@@ -63,8 +62,8 @@ public class ProdutoDao {
             pstm = conecta.getConexao().prepareStatement(sql);             
             pstm.setString(1, produto.getCodigo());
             pstm.setString(2, produto.getNome());
-            pstm.setFloat(3, produto.getCusto());
-            pstm.setFloat(4, produto.getVenda());
+            pstm.setFloat(3, produto.getValorCusto());
+            pstm.setFloat(4, produto.getValorVenda());
            
             pstm.setInt(5,produto.getIdProduto());
             pstm.execute();
@@ -128,8 +127,8 @@ public class ProdutoDao {
                 String nome = rs.getString("nome");
                 Float custo = rs.getFloat("custo");
                 Float venda = rs.getFloat("venda");
-                Estoque estoque = new Estoque();
-                estoque.setQuantidade(10);
+                
+                int estoque = rs.getInt("estoque");
                 
                 //localiza objeto pelo id
                 TipoJoia tipoJoia = new TipoJoia();
@@ -140,7 +139,7 @@ public class ProdutoDao {
                     if(t.getIdTipoJoia() == idTipoJoia)
                         tipoJoia = t;
                 }  
-                Produto produto = new Produto(cod, nome, tipoJoia, custo, venda);
+                Produto produto = new Produto(id, tipoJoia, cod, nome, custo, venda, idTipoJoia);
                 produto.setIdProduto(id);
                 listaProduto.add(produto);
             }

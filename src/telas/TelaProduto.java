@@ -6,7 +6,6 @@
 package telas;
 
 import dao.ClienteDao;
-import dao.EstoqueDao;
 import dao.ProdutoDao;
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -15,7 +14,6 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
-import modelo.Estoque;
 import modelo.Produto;
 import modelo.TipoJoia;
 
@@ -34,7 +32,7 @@ public class TelaProduto extends javax.swing.JInternalFrame {
      */
     public TelaProduto() {
         initComponents();
-        attTabelaEstoque();
+      //  attTabelaEstoque();
         
         //verificaTabela();             metodo que iria atualizar a tabela automaticamente, mas n ta funcinando certo
         
@@ -366,7 +364,7 @@ public class TelaProduto extends javax.swing.JInternalFrame {
                 
                     dtm = (DefaultTableModel) tabela.getModel();
                     
-                    attTabelaEstoque();
+                  //  attTabelaEstoque();
                 try {
                     Thread.sleep(1000); //espera 1 segundo para fazer a nova evolução
                 } catch(InterruptedException ex){
@@ -377,16 +375,7 @@ public class TelaProduto extends javax.swing.JInternalFrame {
         
         
     }
-    public void attTabelaEstoque(){
-        dtm = (DefaultTableModel) tabela.getModel();
-        EstoqueDao estoqueDao = new EstoqueDao();
-        List<Estoque> listaEstoque = new ArrayList<Estoque>();
-        listaEstoque = estoqueDao.getEstoque();
-        for (Estoque estoque : listaEstoque){
-            dtm.insertRow(dtm.getRowCount(),new Object[]{estoque.getProduto().getCodigo(),estoque.getProduto().getNome(),estoque.getProduto().getCusto(),estoque.getProduto().getVenda(),estoque.getProduto().getTipoJoia().getDescricao(),estoque.getQuantidade()});
-        }
-        
-    }
+
     
    public void setPainelDP(javax.swing.JDesktopPane panel){
        
@@ -406,9 +395,9 @@ public class TelaProduto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        EstoqueDao daoE = new EstoqueDao();
+      //  EstoqueDao daoE = new EstoqueDao();
         int idE = 0;
-        for (Estoque e : daoE.getEstoque()){
+        /*for (Estoque e : daoE.getEstoque()){
             if(e.getProduto().getNome().equals(dtm.getValueAt(tabela.getSelectedRow(), 1).toString())){
                 idE = e.getIdEstoque();
                 daoE.excluiE(idE);
@@ -420,7 +409,7 @@ public class TelaProduto extends javax.swing.JInternalFrame {
             dtm.setRowCount(0);
             attTabelaEstoque();
             
-          
+          */
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
@@ -445,8 +434,8 @@ public class TelaProduto extends javax.swing.JInternalFrame {
             
             produto.setCodigo(tabela.getValueAt(linha, 0).toString());
             produto.setNome(tabela.getValueAt(linha, 1).toString());
-            produto.setCusto(Float.parseFloat(tabela.getValueAt(linha, 2).toString()));
-            produto.setVenda(Float.parseFloat(tabela.getValueAt(linha, 3).toString()));
+            //produto.setCusto(Float.parseFloat(tabela.getValueAt(linha, 2).toString()));
+            //produto.setVenda(Float.parseFloat(tabela.getValueAt(linha, 3).toString()));
             //tipoJoia.setIdTipoJoia(Integer.parseInt(tabela.getValueAt(linha, 5).toString()));
             produto.setTipoJoia(tipoJoia);
             produtoDao.alteraProduto(produto);
