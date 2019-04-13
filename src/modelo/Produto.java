@@ -21,8 +21,7 @@ public class Produto {
     public Produto() {
     }
 
-    public Produto(int idProduto, TipoJoia tipoJoia, String codigo, String nome, float valorCusto, float valorVenda, int quantidadeEstoque) {
-        this.idProduto = idProduto;
+    public Produto(String codigo, String nome, float valorCusto, float valorVenda, int quantidadeEstoque, TipoJoia tipoJoia) {
         this.tipoJoia = tipoJoia;
         this.codigo = codigo;
         this.nome = nome;

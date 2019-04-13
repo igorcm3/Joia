@@ -31,7 +31,7 @@ public class ProdutoDao {
         conecta = new Conecta();
         conecta.iniciaConexao();
 
-        String sql = "INSERT INTO `JoalheriaJoia`.`Produto` (`codigo`, `nome`, `custo`, `venda`, `idTipoJoia`) VALUES (?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO `JoalheriaJoia`.`Produto` (`codigo`, `nome`, `valorCusto`, `valorVenda`, `idTipoJoia` , `quantidadeEstoque`) VALUES (?, ?, ?, ?, ?, ?);";
 
         try {
             PreparedStatement pstm;
@@ -42,6 +42,7 @@ public class ProdutoDao {
             pstm.setFloat(3, produto.getValorCusto());
             pstm.setFloat(4, produto.getValorVenda());
             pstm.setInt(5, produto.getTipoJoia().getIdTipoJoia());
+            pstm.setInt(6, produto.getQuantidadeEstoque());
             pstm.execute();
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -55,7 +56,7 @@ public class ProdutoDao {
         conecta = new Conecta();
         conecta.iniciaConexao();
         
-        String sql = "UPDATE `JoalheriaJoia`.`Produto` SET `codigo`=?, `nome`=?, `custo`=?, `venda`=? WHERE `idProduto`=?;";
+        String sql = "UPDATE `JoalheriaJoia`.`Produto` SET `codigo`=?, `nome`=?, `valorCusto`=?, `valorVenda`=?, `quantidadeEstoque`=? WHERE `idProduto`=?; ";
        
         try {
             PreparedStatement pstm;
@@ -64,8 +65,8 @@ public class ProdutoDao {
             pstm.setString(2, produto.getNome());
             pstm.setFloat(3, produto.getValorCusto());
             pstm.setFloat(4, produto.getValorVenda());
-           
-            pstm.setInt(5,produto.getIdProduto());
+            pstm.setInt(5, produto.getQuantidadeEstoque());
+            pstm.setInt(6,produto.getIdProduto());
             pstm.execute();
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -125,10 +126,10 @@ public class ProdutoDao {
                 int id = rs.getInt("idProduto");
                 String cod = rs.getString("codigo");
                 String nome = rs.getString("nome");
-                Float custo = rs.getFloat("custo");
-                Float venda = rs.getFloat("venda");
+                Float custo = rs.getFloat("valorCusto");
+                Float venda = rs.getFloat("valorVenda");
                 
-                int estoque = rs.getInt("estoque");
+                int estoque = rs.getInt("quantidadeEstoque");
                 
                 //localiza objeto pelo id
                 TipoJoia tipoJoia = new TipoJoia();
@@ -139,7 +140,7 @@ public class ProdutoDao {
                     if(t.getIdTipoJoia() == idTipoJoia)
                         tipoJoia = t;
                 }  
-                Produto produto = new Produto(id, tipoJoia, cod, nome, custo, venda, idTipoJoia);
+                Produto produto = new Produto(cod, nome, custo, venda,estoque, tipoJoia );
                 produto.setIdProduto(id);
                 listaProduto.add(produto);
             }

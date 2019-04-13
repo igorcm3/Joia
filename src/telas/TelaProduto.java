@@ -7,6 +7,7 @@ package telas;
 
 import dao.ClienteDao;
 import dao.ProdutoDao;
+import dao.TipoJoiaDao;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -31,23 +32,8 @@ public class TelaProduto extends javax.swing.JInternalFrame {
      * Creates new form TelaProduto
      */
     public TelaProduto() {
-        initComponents();
-      //  attTabelaEstoque();
-        
-        //verificaTabela();             metodo que iria atualizar a tabela automaticamente, mas n ta funcinando certo
-        
-        /*
-        dtm = (DefaultTableModel) tabela.getModel();
-        ProdutoDao dao = new ProdutoDao();
-        listaProduto = dao.getProduto();
-        Estoque estoque = new Estoque();
-        estoque.setQuantidade(10);
-        // fazer dao estoque para pegar o estoque desse produto pela Fk
-        for (Produto produto : listaProduto){
-            dtm.insertRow(dtm.getRowCount(), new Object[]{produto.getCodigo(),produto.getNome(),produto.getCusto(),produto.getVenda(),estoque.getQuantidade(),produto.getTipoJoia().getDescricao()});    
-            
-            
-        }*/
+        initComponents();      
+       atualizaTabela();             
     }
 
     /**
@@ -316,7 +302,7 @@ public class TelaProduto extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelCor, javax.swing.GroupLayout.DEFAULT_SIZE, 939, Short.MAX_VALUE)
+            .addComponent(painelCor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -326,7 +312,7 @@ public class TelaProduto extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(painelCor, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
+                .addComponent(painelCor, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -338,45 +324,17 @@ public class TelaProduto extends javax.swing.JInternalFrame {
         setBounds(0, 0, 950, 603);
     }// </editor-fold>//GEN-END:initComponents
     
-    
-    /*
     public void atualizaTabela(){
         dtm = (DefaultTableModel) tabela.getModel();
-        ProdutoDao dao = new ProdutoDao();
-        listaProduto = dao.getProduto();
-        Estoque estoque = new Estoque();
-        estoque.setQuantidade(10);
-        // fazer dao estoque para pegar o estoque desse produto pela Fk
+            ProdutoDao produtoDao = new ProdutoDao();
+            List<Produto> listaProduto = new ArrayList<Produto>();
+            listaProduto = produtoDao.getProduto();
         for (Produto produto : listaProduto){
-            dtm.insertRow(dtm.getRowCount(), new Object[]{produto.getCodigo(),produto.getNome(),produto.getCusto(),produto.getVenda(),produto.getTipoJoia().getDescricao(),"12"});    
-            
-            
-        }
-                      
+            dtm.insertRow(dtm.getRowCount(), new Object[]{produto.getCodigo(),produto.getNome(),produto.getValorCusto(),produto.getValorVenda(),produto.getTipoJoia().getDescricao(), produto.getQuantidadeEstoque()});    
+        }      
     } 
-    */
-    
-    
-    public void verificaTabela(){
-            Thread th = new Thread(new Runnable() { //cria uma thread
-        public void run() {
-            while(true) { //roda indefinidamente
-                
-                    dtm = (DefaultTableModel) tabela.getModel();
-                    
-                  //  attTabelaEstoque();
-                try {
-                    Thread.sleep(1000); //espera 1 segundo para fazer a nova evolução
-                } catch(InterruptedException ex){
-                }
-            }
-        }
-    }); th.start();  
-        
-        
-    }
-
-    
+  
+ 
    public void setPainelDP(javax.swing.JDesktopPane panel){
        
        this.painelDP = panel;
@@ -395,21 +353,10 @@ public class TelaProduto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-      //  EstoqueDao daoE = new EstoqueDao();
-        int idE = 0;
-        /*for (Estoque e : daoE.getEstoque()){
-            if(e.getProduto().getNome().equals(dtm.getValueAt(tabela.getSelectedRow(), 1).toString())){
-                idE = e.getIdEstoque();
-                daoE.excluiE(idE);
-              }
-        }
-        
-            ProdutoDao dao = new ProdutoDao();
-            dao.excluiProduto(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
-            dtm.setRowCount(0);
-            attTabelaEstoque();
-            
-          */
+        ProdutoDao daoP = new ProdutoDao();
+        daoP.excluiProduto(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
+        dtm.setRowCount(0);  // limpa tabela
+        atualizaTabela();   // atualiza     
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
@@ -423,25 +370,32 @@ public class TelaProduto extends javax.swing.JInternalFrame {
             listaProduto = produtoDao.getProduto();
 
             for (Produto p : listaProduto){
-                if(p.getCodigo().equals(tabela.getValueAt(tabela.getSelectedRow(), 0))){                    
+                if(p.getCodigo().equals(tabela.getValueAt(tabela.getSelectedRow(), 0))){   
+                    linha = tabela.getSelectedRow();
                     produto = p;
                 }
-
             }
             
             linha = tabela.getSelectedRow();
             TipoJoia tipoJoia = new TipoJoia();
-            
+            TipoJoiaDao tipoDao = new TipoJoiaDao(); 
+            // alimentando objeto a ser alterado
             produto.setCodigo(tabela.getValueAt(linha, 0).toString());
             produto.setNome(tabela.getValueAt(linha, 1).toString());
-            //produto.setCusto(Float.parseFloat(tabela.getValueAt(linha, 2).toString()));
-            //produto.setVenda(Float.parseFloat(tabela.getValueAt(linha, 3).toString()));
-            //tipoJoia.setIdTipoJoia(Integer.parseInt(tabela.getValueAt(linha, 5).toString()));
+            produto.setValorCusto(Float.parseFloat(tabela.getValueAt(linha, 2).toString()));
+            produto.setValorVenda(Float.parseFloat(tabela.getValueAt(linha, 3).toString()));
+            int idTipoJoia =0;
+            for(TipoJoia tp : tipoDao.getTipo()){
+                if (tp.getDescricao().equals(tabela.getValueAt(linha, 4).toString())) {
+                    tipoJoia = tp;
+                }
+            } 
             produto.setTipoJoia(tipoJoia);
+            produto.setQuantidadeEstoque(Integer.parseInt(tabela.getValueAt(linha, 5).toString()));
             produtoDao.alteraProduto(produto);
             
-            // dtm.setRowCount(0);
-            // attTabelaEstoque();
+            dtm.setRowCount(0);
+            atualizaTabela();
         }        
     }//GEN-LAST:event_btnEditarActionPerformed
 

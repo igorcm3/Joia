@@ -7,6 +7,7 @@ package telas;
 
 import dao.TipoJoiaDao;
 import java.util.List;
+import javax.swing.JOptionPane;
 import modelo.TipoJoia;
 
 /**
@@ -132,8 +133,6 @@ public class TelaNovoTipoJoia extends javax.swing.JInternalFrame {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
-
-    
     public void atualizaCodigoLabel(){
        String i = null;
        TipoJoia tp = new TipoJoia();
@@ -152,22 +151,19 @@ public class TelaNovoTipoJoia extends javax.swing.JInternalFrame {
         i = i.trim();
         int codInt = Integer.parseInt(i);
         codInt++;
-        
         if(i.length() == 1){
             i = "000"+ Integer.toString(codInt);
-
         }
         if(i.length() == 2){
             i = "00"+ Integer.toString(codInt);
-            
         }
         if(i.length() == 3){
-            i = "0"+ Integer.toString(codInt);
-            
+            i = "0"+ Integer.toString(codInt);   
+        } // vazio será o primeiro a aser inserido
+        if (i.isEmpty()) {
+         i = "0000";   
         }
-                
         return i;
-        
     }
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
        String i = null;
@@ -182,8 +178,9 @@ public class TelaNovoTipoJoia extends javax.swing.JInternalFrame {
        tp.setCodigo(i);
        tp.setDescricao(txtNomeTipoJoia.getText());
        tpdao.salvaTipo(tp);
+       atualizaCodigoLabel();
        txtNomeTipoJoia.setText("");
-       
+       JOptionPane.showMessageDialog(rootPane, "Novo tipo joia inserido!");
     }//GEN-LAST:event_btnSalvarActionPerformed
 
 

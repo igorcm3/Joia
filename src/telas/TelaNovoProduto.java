@@ -5,14 +5,13 @@
  */
 package telas;
 
-import dao.EstoqueDao;
 import dao.ProdutoDao;
 import dao.TipoJoiaDao;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import modelo.Estoque;
 import modelo.Produto;
 import modelo.TipoJoia;
 
@@ -29,23 +28,11 @@ public class TelaNovoProduto extends javax.swing.JInternalFrame{
      */
     public TelaNovoProduto() {
         initComponents();
-        ProdutoDao daoP = new ProdutoDao();
-  
-        List<Produto> listaProduto = new ArrayList<Produto>();
-        listaProduto = daoP.getProduto();
-        String codigo = "00";
-        
-        for (Produto p : listaProduto){
-            codigo = "00"+String.valueOf((p.getIdProduto())+1);
-            
-        }
-        lbCodigo.setText(codigo);
-        
         TipoJoiaDao daoTipo = new TipoJoiaDao();
         for (TipoJoia tipo : daoTipo.getTipo()){
             comboTipoJoia.addItem(tipo.getDescricao());
         }
-        
+        atualizaCodigoLabel();
     }
 
     /**
@@ -108,7 +95,7 @@ public class TelaNovoProduto extends javax.swing.JInternalFrame{
 
         lbCodigo.setBackground(new java.awt.Color(254, 254, 254));
         lbCodigo.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        lbCodigo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbCodigo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -185,6 +172,38 @@ public class TelaNovoProduto extends javax.swing.JInternalFrame{
         setBounds(0, 0, 500, 550);
     }// </editor-fold>//GEN-END:initComponents
 
+        public void atualizaCodigoLabel(){
+       String i = null;
+       Produto tp = new Produto();
+       ProdutoDao tpdao = new ProdutoDao();
+
+        for (Produto j : tpdao.getProduto()) {
+            i = j.getCodigo();
+            
+        }
+        i = validaIncrementaCodigo(i);
+        lbCodigo.setText(String.valueOf(i));
+    }
+    
+    public String validaIncrementaCodigo(String i){
+        i = i.replace("0", "");
+        i = i.trim();
+        int codInt = Integer.parseInt(i);
+        codInt++;
+        if(i.length() == 1){
+            i = "000"+ Integer.toString(codInt);
+        }
+        if(i.length() == 2){
+            i = "00"+ Integer.toString(codInt);
+        }
+        if(i.length() == 3){
+            i = "0"+ Integer.toString(codInt);   
+        } // vazio será o primeiro a aser inserido
+        if (i.isEmpty()) {
+         i = "0000";   
+        }
+        return i;
+    }
     private void btnSalvarNovoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarNovoProdutoActionPerformed
         
         if(!txtNome.getText().equals("") && !txtCusto.getText().equals("") && !txtVenda.getText().equals("") && !txtEstoque.getText().equals("")){
@@ -199,22 +218,9 @@ public class TelaNovoProduto extends javax.swing.JInternalFrame{
             }
 
             tipoJoia.setIdTipoJoia(idTipo);
-            Produto produto = new Produto(lbCodigo.getText(), txtNome.getText(),tipoJoia, Float.parseFloat(txtCusto.getText()),Float.parseFloat(txtVenda.getText()));
+            Produto produto = new Produto(lbCodigo.getText(),txtNome.getText(), Float.parseFloat(txtCusto.getText()),Float.parseFloat(txtVenda.getText()), Integer.parseInt(txtEstoque.getText()), tipoJoia);
             produtoDao.salvaProduto(produto);
 
-            // salvar estoque 
-
-            EstoqueDao estoqueDao = new EstoqueDao();
-            int idP = 0;
-            for (Produto pr : produtoDao.getProduto()){
-                idP = pr.getIdProduto();
-            }
-
-            produto.setIdProduto(idP);
-            int qnt = Integer.parseInt(txtEstoque.getText().trim());
-            System.out.println("Estoque escrito  qnt   "+qnt);
-            Estoque estoque = new Estoque(qnt,produto);
-            estoqueDao.salvaEstoque(estoque);
             txtNome.setText("");
             txtCusto.setText("");
             txtVenda.setText("");
@@ -222,12 +228,16 @@ public class TelaNovoProduto extends javax.swing.JInternalFrame{
             
             // atualiza tabela
             dt.setRowCount(0);
-            List<Estoque> listaEstoque = new ArrayList<Estoque>();
-            listaEstoque = estoqueDao.getEstoque();
-            for (Estoque es : listaEstoque){
-                dt.insertRow(dt.getRowCount(),new Object[]{es.getProduto().getCodigo(),es.getProduto().getNome(),es.getProduto().getCusto(),es.getProduto().getVenda(),es.getProduto().getTipoJoia().getDescricao(),es.getQuantidade()});
+            List<Produto> listaProduto = new ArrayList<Produto>();
+            listaProduto = produtoDao.getProduto();
+            for (Produto p : listaProduto){ // ordem :codigo, nome, custo, venda, tipo joia, estoque
+                dt.insertRow(dt.getRowCount(),new Object[]{p.getCodigo(), p.getNome(), p.getValorCusto(), p.getValorVenda(), p.getTipoJoia().getDescricao(),p.getQuantidadeEstoque()});
             }
+            JOptionPane.showMessageDialog(rootPane, "Novo produto inserido!");
+        } else{
+            JOptionPane.showMessageDialog(null, "Preencha todas as informações!");
         }
+          atualizaCodigoLabel();
     }//GEN-LAST:event_btnSalvarNovoProdutoActionPerformed
 
     public void setDt(DefaultTableModel dt) {
