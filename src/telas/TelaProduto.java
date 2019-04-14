@@ -329,9 +329,10 @@ public class TelaProduto extends javax.swing.JInternalFrame {
             ProdutoDao produtoDao = new ProdutoDao();
             List<Produto> listaProduto = new ArrayList<Produto>();
             listaProduto = produtoDao.getProduto();
-        for (Produto produto : listaProduto){
-            dtm.insertRow(dtm.getRowCount(), new Object[]{produto.getCodigo(),produto.getNome(),produto.getValorCusto(),produto.getValorVenda(),produto.getTipoJoia().getDescricao(), produto.getQuantidadeEstoque()});    
-        }      
+        
+            for (Produto produto : listaProduto){
+                dtm.insertRow(dtm.getRowCount(), new Object[]{produto.getCodigo(),produto.getNome(),produto.getValorCusto(),produto.getValorVenda(),produto.getTipoJoia().getDescricao(), produto.getQuantidadeEstoque()});    
+            }      
     } 
   
  
@@ -371,7 +372,7 @@ public class TelaProduto extends javax.swing.JInternalFrame {
 
             for (Produto p : listaProduto){
                 if(p.getCodigo().equals(tabela.getValueAt(tabela.getSelectedRow(), 0))){   
-                    linha = tabela.getSelectedRow();
+                    //linha = tabela.getSelectedRow();
                     produto = p;
                 }
             }
@@ -380,7 +381,7 @@ public class TelaProduto extends javax.swing.JInternalFrame {
             TipoJoia tipoJoia = new TipoJoia();
             TipoJoiaDao tipoDao = new TipoJoiaDao(); 
             // alimentando objeto a ser alterado
-            produto.setCodigo(tabela.getValueAt(linha, 0).toString());
+                //produto.setCodigo(tabela.getValueAt(linha, 0).toString());
             produto.setNome(tabela.getValueAt(linha, 1).toString());
             produto.setValorCusto(Float.parseFloat(tabela.getValueAt(linha, 2).toString()));
             produto.setValorVenda(Float.parseFloat(tabela.getValueAt(linha, 3).toString()));
