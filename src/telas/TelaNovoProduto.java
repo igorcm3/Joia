@@ -234,10 +234,11 @@ public class TelaNovoProduto extends javax.swing.JInternalFrame{
                 dt.insertRow(dt.getRowCount(),new Object[]{p.getCodigo(), p.getNome(), p.getValorCusto(), p.getValorVenda(), p.getTipoJoia().getDescricao(),p.getQuantidadeEstoque()});
             }
             JOptionPane.showMessageDialog(rootPane, "Novo produto inserido!");
+            atualizaCodigoLabel();
         } else{
             JOptionPane.showMessageDialog(null, "Preencha todas as informações!");
         }
-          atualizaCodigoLabel();
+          
     }//GEN-LAST:event_btnSalvarNovoProdutoActionPerformed
 
     public void setDt(DefaultTableModel dt) {
