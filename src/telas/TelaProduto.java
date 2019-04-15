@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 import modelo.Produto;
@@ -355,9 +356,12 @@ public class TelaProduto extends javax.swing.JInternalFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         ProdutoDao daoP = new ProdutoDao();
+        String prodExcluido =  "Produto "+(tabela.getValueAt(tabela.getSelectedRow(), 1).toString())+" excluido!";
         daoP.excluiProduto(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
         dtm.setRowCount(0);  // limpa tabela
-        atualizaTabela();   // atualiza     
+        atualizaTabela();   // atualiza]
+        JOptionPane.showMessageDialog(rootPane,prodExcluido );
+
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
@@ -393,10 +397,13 @@ public class TelaProduto extends javax.swing.JInternalFrame {
             } 
             produto.setTipoJoia(tipoJoia);
             produto.setQuantidadeEstoque(Integer.parseInt(tabela.getValueAt(linha, 5).toString()));
+            
+            String prodEditado = "Produto "+(tabela.getValueAt(tabela.getSelectedRow(), 1).toString())+" alterado!";
             produtoDao.alteraProduto(produto);
             
             dtm.setRowCount(0);
             atualizaTabela();
+             JOptionPane.showMessageDialog(rootPane,prodEditado );
         }        
     }//GEN-LAST:event_btnEditarActionPerformed
 
