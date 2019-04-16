@@ -28,10 +28,10 @@ public class TelaNovoCliente extends javax.swing.JInternalFrame {
          ClienteDao dao = new ClienteDao();
         List<Cliente> listaCliente  = new ArrayList<Cliente>();
         listaCliente = dao.getCliente();
-        String codigo = "00";
+        String codigo = "0001";
         
         for (Cliente c : listaCliente){
-            codigo = "0"+String.valueOf(c.getIdCliente()+1);
+            codigo = "000"+String.valueOf(c.getIdCliente()+1);
         }
         
         labelCod.setText(codigo);
@@ -210,7 +210,7 @@ public class TelaNovoCliente extends javax.swing.JInternalFrame {
                         .addGap(34, 34, 34)
                         .addComponent(campoUf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(campoRg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -233,10 +233,12 @@ public class TelaNovoCliente extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE))
         );
 
-        setBounds(0, 0, 460, 530);
+        setBounds(0, 0, 460, 556);
     }// </editor-fold>//GEN-END:initComponents
 
     public void setDt(DefaultTableModel dt) {

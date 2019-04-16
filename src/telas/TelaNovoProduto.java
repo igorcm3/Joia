@@ -181,22 +181,26 @@ public class TelaNovoProduto extends javax.swing.JInternalFrame{
             i = j.getCodigo();
             
         }
-        i = validaIncrementaCodigo(i);
+        
+        if (tpdao.getProduto() != null)
+            i = validaIncrementaCodigo(i);
+
         lbCodigo.setText(String.valueOf(i));
     }
     
     public String validaIncrementaCodigo(String i){
-        i = i.replace("0", "");
-        i = i.trim();
+
         int codInt = Integer.parseInt(i);
         codInt++;
-        if(i.length() == 1){
+        System.out.println(" "+i);
+        if(i.length() == 4){
             i = "000"+ Integer.toString(codInt);
         }
-        if(i.length() == 2){
+        if(i.length() == 5){
             i = "00"+ Integer.toString(codInt);
+            
         }
-        if(i.length() == 3){
+        if(i.length() > 5){
             i = "0"+ Integer.toString(codInt);   
         } // vazio será o primeiro a aser inserido
         if (i.isEmpty()) {
