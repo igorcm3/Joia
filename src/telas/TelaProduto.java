@@ -84,7 +84,7 @@ public class TelaProduto extends javax.swing.JInternalFrame {
                 java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                true, true, true, true, false, false
+                true, true, true, true, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -303,7 +303,7 @@ public class TelaProduto extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelCor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(painelCor, javax.swing.GroupLayout.DEFAULT_SIZE, 940, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -313,7 +313,7 @@ public class TelaProduto extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(painelCor, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
+                .addComponent(painelCor, javax.swing.GroupLayout.PREFERRED_SIZE, 569, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()

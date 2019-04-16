@@ -173,7 +173,7 @@ public class TelaNovoProduto extends javax.swing.JInternalFrame{
     }// </editor-fold>//GEN-END:initComponents
 
         public void atualizaCodigoLabel(){
-       String i = null;
+       String i = "0001";
        Produto tp = new Produto();
        ProdutoDao tpdao = new ProdutoDao();
 
