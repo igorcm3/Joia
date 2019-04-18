@@ -69,7 +69,6 @@ public class TelaInicial extends javax.swing.JFrame {
         painellCor.setPreferredSize(new java.awt.Dimension(943, 615));
 
         btnCliente.setText("Cliente");
-        btnCliente.setEnabled(false);
         btnCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClienteActionPerformed(evt);
@@ -246,6 +245,8 @@ public class TelaInicial extends javax.swing.JFrame {
         telaProd.setPainelDP(painelDP);
         painelDP.add(telaProd);
         telaProd.setVisible(true);   
+        
+        
     }//GEN-LAST:event_btnProdutoActionPerformed
 
     private void btnVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaActionPerformed
@@ -257,6 +258,7 @@ public class TelaInicial extends javax.swing.JFrame {
         telaCli.setPainelDP(painelDP);
         painelDP.add(telaCli);
         telaCli.setVisible(true);
+        
     }//GEN-LAST:event_btnClienteActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed

@@ -6,6 +6,7 @@
 package telas;
 
 import dao.ClienteDao;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -24,7 +25,6 @@ public class TelaNovoCliente extends javax.swing.JInternalFrame {
      */
     public TelaNovoCliente() {
         initComponents();
-     
          ClienteDao dao = new ClienteDao();
         List<Cliente> listaCliente  = new ArrayList<Cliente>();
         listaCliente = dao.getCliente();
@@ -243,6 +243,10 @@ public class TelaNovoCliente extends javax.swing.JInternalFrame {
 
     public void setDt(DefaultTableModel dt) {
         this.dt = dt;
+    }
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2); 
     }
     
     

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 
@@ -197,7 +198,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         TelaNovoCliente telaNovoCliente = new TelaNovoCliente();
         paineu.add(telaNovoCliente);
         telaNovoCliente.setVisible(true);
-        
+        telaNovoCliente.setPosicao();
         telaNovoCliente.setDt(dtm);
     }//GEN-LAST:event_btnNovoClienteActionPerformed
 
@@ -212,6 +213,8 @@ public class TelaCliente extends javax.swing.JInternalFrame {
             for (Cliente cliente : listaCliente){
                 dtm.insertRow(dtm.getRowCount(), new Object[]{cliente.getCodigo(),cliente.getNome(),cliente.getEndereco(),cliente.getBairro(),cliente.getCidade(),cliente.getCep(),cliente.getCpf(),cliente.getUf(),cliente.getRg(),cliente.getCelular()});
             }
+              String cliExcluido = "Cliente excluido: "+tabela.getValueAt(tabela.getSelectedRow(), 0).toString();
+              JOptionPane.showMessageDialog(rootPane,cliExcluido );
         }
     }//GEN-LAST:event_btnRemoverActionPerformed
 
@@ -240,7 +243,8 @@ public class TelaCliente extends javax.swing.JInternalFrame {
             cliente.setUf(tabela.getValueAt(linha, 7).toString());
             cliente.setRg(tabela.getValueAt(linha, 8).toString());
             clienteDao.alteraCliente(cliente);
-            
+            String novoCli = "Novo cliente inserido: "+tabela.getValueAt(linha, 1).toString();
+            JOptionPane.showMessageDialog(rootPane,novoCli );
         }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
