@@ -192,8 +192,10 @@
             <Component class="javax.swing.JButton" name="btnServicos">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Servi&#xe7;os"/>
-                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnServicosActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnProduto">
               <Properties>
@@ -206,8 +208,10 @@
             <Component class="javax.swing.JButton" name="btnAgendamento">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agendamentos"/>
-                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgendamentoActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnVenda">
               <Properties>

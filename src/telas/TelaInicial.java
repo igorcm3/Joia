@@ -76,7 +76,11 @@ public class TelaInicial extends javax.swing.JFrame {
         });
 
         btnServicos.setText("Serviços");
-        btnServicos.setEnabled(false);
+        btnServicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnServicosActionPerformed(evt);
+            }
+        });
 
         btnProduto.setText("Produto");
         btnProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -86,7 +90,11 @@ public class TelaInicial extends javax.swing.JFrame {
         });
 
         btnAgendamento.setText("Agendamentos");
-        btnAgendamento.setEnabled(false);
+        btnAgendamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgendamentoActionPerformed(evt);
+            }
+        });
 
         btnVenda.setText("Venda");
         btnVenda.setEnabled(false);
@@ -272,6 +280,19 @@ public class TelaInicial extends javax.swing.JFrame {
         painelDP.add(tj);
         tj.setVisible(true);
     }//GEN-LAST:event_menuTipoJoiaActionPerformed
+
+    private void btnServicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServicosActionPerformed
+
+        TelaServico sv= new TelaServico();
+        painelDP.add(sv);
+        sv.setVisible(true);
+    }//GEN-LAST:event_btnServicosActionPerformed
+
+    private void btnAgendamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendamentoActionPerformed
+        TelaAgendamentos a = new TelaAgendamentos();
+        painelDP.add(a);
+        a.setVisible(true);
+    }//GEN-LAST:event_btnAgendamentoActionPerformed
 
     /**
      * @param args the command line arguments
